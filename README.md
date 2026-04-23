@@ -2,18 +2,15 @@
 
 A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence](https://io.net) as a custom model provider.
 
-[![Update Models](https://github.com/monotykamary/pi-io-provider/actions/workflows/update-models.yml/badge.svg)](https://github.com/monotykamary/pi-io-provider/actions/workflows/update-models.yml)
-
 ## Features
 
 - **OpenAI-compatible API** — Uses IO Intelligence's `/api/v1/chat/completions` endpoint
-- **23 AI models** — DeepSeek, Kimi, GLM, Llama, Qwen, Mistral, and more
+- **23+ AI models** — DeepSeek, Kimi, GLM, Llama, Qwen, Mistral, and more
 - **Reasoning models** — DeepSeek R1, Kimi K2 Thinking with extended reasoning
 - **Vision models** — Kimi K2.5/K2.6, Llama 4 Maverick, Llama 3.2 Vision, Qwen2.5 VL, Mistral Large
 - **Prompt caching** — Cache read/write support on most models
-- **Confidential inference** — Verifiable TEE inference with attestation (via `/private/` endpoints)
+- **Confidential inference** — Verifiable TEE inference with attestation (via /private/ endpoints)
 - **Streaming** — Real-time token streaming
-- **Auto-updated** — Daily CI job keeps model list and pricing current
 
 ## Available Models
 
@@ -43,7 +40,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | GLM 5 | `zai-org/GLM-5` | 203K | 203K | ❌ | ❌ | ✅ | $1.00 | $3.00 |
 | GLM 5.1 | `zai-org/GLM-5.1` | 203K | 131K | ❌ | ❌ | ✅ | $1.06 | $4.40 |
 
-*Costs are per million tokens. Cache read/write pricing available on most models — see `models.json` for full pricing.*
+*Costs are per million tokens. Cache read/write pricing available on most models.*
 
 ## Installation
 

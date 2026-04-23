@@ -67,7 +67,7 @@ function cleanName(apiName, apiId) {
   // Special case: "R1 0528" → "DeepSeek R1 0528"
   if (name === 'R1 0528') name = 'DeepSeek R1 0528';
 
-  return `IO Intelligence: ${name}`;
+  return name;
 }
 
 function convertModel(apiModel) {
@@ -127,8 +127,7 @@ function generateReadme(models) {
     const vision = m.input.includes('image') ? '✅' : '❌';
     const reasoning = m.reasoning ? '✅' : '❌';
     const cache = m.cost.cacheRead > 0 ? '✅' : '❌';
-    // Strip IO Intelligence prefix for the table
-    const displayName = m.name.replace('IO Intelligence: ', '');
+    const displayName = m.name;
     return `| ${displayName} | \`${m.id}\` | ${formatCtx(m.contextWindow)} | ${formatCtx(m.maxTokens)} | ${vision} | ${reasoning} | ${cache} | ${formatCost(m.cost.input)} | ${formatCost(m.cost.output)} |`;
   }).join('\n');
 

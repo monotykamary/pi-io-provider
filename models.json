@@ -1,7 +1,7 @@
 [
   {
     "id": "moonshotai/Kimi-K2.6",
-    "name": "IO Intelligence: Kimi K2.6",
+    "name": "Kimi K2.6",
     "reasoning": false,
     "input": [
       "text",
@@ -10,7 +10,7 @@
     "cost": {
       "input": 0.8,
       "output": 4,
-      "cacheRead": 0.2,
+      "cacheRead": 0.25,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -18,7 +18,7 @@
   },
   {
     "id": "zai-org/GLM-5.1",
-    "name": "IO Intelligence: GLM 5.1",
+    "name": "GLM 5.1",
     "reasoning": false,
     "input": [
       "text"
@@ -34,7 +34,7 @@
   },
   {
     "id": "MiniMaxAI/MiniMax-M2.5",
-    "name": "IO Intelligence: MiniMax M2.5",
+    "name": "MiniMax M2.5",
     "reasoning": false,
     "input": [
       "text"
@@ -50,7 +50,7 @@
   },
   {
     "id": "moonshotai/Kimi-K2.5",
-    "name": "IO Intelligence: Kimi K2.5",
+    "name": "Kimi K2.5",
     "reasoning": false,
     "input": [
       "text",
@@ -67,7 +67,7 @@
   },
   {
     "id": "zai-org/GLM-5",
-    "name": "IO Intelligence: GLM 5",
+    "name": "GLM 5",
     "reasoning": false,
     "input": [
       "text"
@@ -83,7 +83,7 @@
   },
   {
     "id": "deepseek-ai/DeepSeek-V3.2",
-    "name": "IO Intelligence: DeepSeek V3.2",
+    "name": "DeepSeek V3.2",
     "reasoning": false,
     "input": [
       "text"
@@ -99,7 +99,7 @@
   },
   {
     "id": "moonshotai/Kimi-K2-Thinking",
-    "name": "IO Intelligence: Kimi K2 Thinking",
+    "name": "Kimi K2 Thinking",
     "reasoning": true,
     "input": [
       "text"
@@ -115,7 +115,7 @@
   },
   {
     "id": "google/gemma-4-26b-a4b-it",
-    "name": "IO Intelligence: Gemma 4 26B A4B",
+    "name": "Gemma 4 26B A4B",
     "reasoning": false,
     "input": [
       "text"
@@ -131,7 +131,7 @@
   },
   {
     "id": "zai-org/GLM-4.7-Flash",
-    "name": "IO Intelligence: GLM 4.7 Flash",
+    "name": "GLM 4.7 Flash",
     "reasoning": false,
     "input": [
       "text"
@@ -147,7 +147,7 @@
   },
   {
     "id": "zai-org/GLM-4.7",
-    "name": "IO Intelligence: GLM 4.7",
+    "name": "GLM 4.7",
     "reasoning": false,
     "input": [
       "text"
@@ -163,7 +163,7 @@
   },
   {
     "id": "moonshotai/Kimi-K2-Instruct-0905",
-    "name": "IO Intelligence: Kimi K2 Instruct 0905",
+    "name": "Kimi K2 Instruct 0905",
     "reasoning": false,
     "input": [
       "text"
@@ -179,7 +179,7 @@
   },
   {
     "id": "meta-llama/Llama-3.2-90B-Vision-Instruct",
-    "name": "IO Intelligence: Llama 3.2 90B Vision Instruct",
+    "name": "Llama 3.2 90B Vision Instruct",
     "reasoning": false,
     "input": [
       "text",
@@ -196,7 +196,7 @@
   },
   {
     "id": "openai/gpt-oss-120b",
-    "name": "IO Intelligence: gpt-oss-120b",
+    "name": "gpt-oss-120b",
     "reasoning": false,
     "input": [
       "text"
@@ -212,7 +212,7 @@
   },
   {
     "id": "Qwen/Qwen2.5-VL-32B-Instruct",
-    "name": "IO Intelligence: Qwen2.5 VL 32B Instruct",
+    "name": "Qwen2.5 VL 32B Instruct",
     "reasoning": false,
     "input": [
       "text",
@@ -229,7 +229,7 @@
   },
   {
     "id": "deepseek-ai/DeepSeek-R1-0528",
-    "name": "IO Intelligence: DeepSeek R1 0528",
+    "name": "DeepSeek R1 0528",
     "reasoning": true,
     "input": [
       "text"
@@ -245,7 +245,7 @@
   },
   {
     "id": "zai-org/GLM-4.6",
-    "name": "IO Intelligence: GLM 4.6",
+    "name": "GLM 4.6",
     "reasoning": false,
     "input": [
       "text"
@@ -261,7 +261,7 @@
   },
   {
     "id": "Qwen/Qwen3-Next-80B-A3B-Instruct",
-    "name": "IO Intelligence: Qwen3 Next 80B A3B Instruct",
+    "name": "Qwen3 Next 80B A3B Instruct",
     "reasoning": false,
     "input": [
       "text"
@@ -277,7 +277,7 @@
   },
   {
     "id": "Intel/Qwen3-Coder-480B-A35B-Instruct-int4-mixed-ar",
-    "name": "IO Intelligence: Qwen3 Coder 480B A35B Instruct INT4 Mixed AR",
+    "name": "Qwen3 Coder 480B A35B Instruct INT4 Mixed AR",
     "reasoning": false,
     "input": [
       "text"
@@ -293,7 +293,7 @@
   },
   {
     "id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
-    "name": "IO Intelligence: Llama 4 Maverick 17B 128E Instruct FP8",
+    "name": "Llama 4 Maverick 17B 128E Instruct FP8",
     "reasoning": false,
     "input": [
       "text",
@@ -310,7 +310,7 @@
   },
   {
     "id": "mistralai/Mistral-Nemo-Instruct-2407",
-    "name": "IO Intelligence: Mistral Nemo Instruct 2407",
+    "name": "Mistral Nemo Instruct 2407",
     "reasoning": false,
     "input": [
       "text"
@@ -326,7 +326,7 @@
   },
   {
     "id": "openai/gpt-oss-20b",
-    "name": "IO Intelligence: gpt-oss-20b",
+    "name": "gpt-oss-20b",
     "reasoning": false,
     "input": [
       "text"
@@ -342,7 +342,7 @@
   },
   {
     "id": "meta-llama/Llama-3.3-70B-Instruct",
-    "name": "IO Intelligence: Llama 3.3 70B Instruct",
+    "name": "Llama 3.3 70B Instruct",
     "reasoning": false,
     "input": [
       "text"
@@ -358,7 +358,7 @@
   },
   {
     "id": "mistralai/Mistral-Large-Instruct-2411",
-    "name": "IO Intelligence: Mistral Large Instruct 2411",
+    "name": "Mistral Large Instruct 2411",
     "reasoning": false,
     "input": [
       "text",
