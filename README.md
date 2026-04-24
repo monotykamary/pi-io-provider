@@ -25,6 +25,8 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ❌ | ✅ | $0.80 | $4.00 |
 | Qwen2.5 VL 32B Instruct | `Qwen/Qwen2.5-VL-32B-Instruct` | 32K | 32K | ✅ | ❌ | ✅ | $0.05 | $0.22 |
 | DeepSeek V3.2 | `deepseek-ai/DeepSeek-V3.2` | 164K | 164K | ❌ | ❌ | ✅ | $0.25 | $0.38 |
+| DeepSeek V4 Flash | `deepseek-ai/DeepSeek-V4-Flash` | 65K | 65K | ❌ | ❌ | ✅ | $1.55 | $2.28 |
+| DeepSeek V4 Pro | `deepseek-ai/DeepSeek-V4-Pro` | 800K | 131K | ❌ | ❌ | ✅ | $4.45 | $5.50 |
 | Gemma 4 26B A4B | `google/gemma-4-26b-a4b-it` | 262K | 262K | ❌ | ❌ | ✅ | $0.14 | $0.50 |
 | Qwen3 Coder 480B A35B Instruct INT4 Mixed AR | `Intel/Qwen3-Coder-480B-A35B-Instruct-int4-mixed-ar` | 106K | 106K | ❌ | ❌ | ✅ | $0.22 | $0.95 |
 | Llama 3.3 70B Instruct | `meta-llama/Llama-3.3-70B-Instruct` | 128K | 128K | ❌ | ❌ | ✅ | $0.10 | $0.32 |
