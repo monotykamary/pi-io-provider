@@ -209,6 +209,7 @@ export default function (pi: ExtensionAPI) {
         pi.registerProvider("io-intelligence", {
           baseUrl: BASE_URL,
           apiKey: "IOINTELLIGENCE_API_KEY",
+          api: "openai-completions",
           models: freshBase.map(toPiModel),
         });
       }
