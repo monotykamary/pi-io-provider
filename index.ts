@@ -206,7 +206,11 @@ export default function (pi: ExtensionAPI) {
     await resolveApiKey(ctx.modelRegistry);
     revalidateModels(cachedApiKey, embeddedModels).then((freshBase) => {
       if (freshBase) {
-        pi.registerProvider("io-intelligence", { models: freshBase.map(toPiModel) });
+        pi.registerProvider("io-intelligence", {
+          baseUrl: BASE_URL,
+          apiKey: "IOINTELLIGENCE_API_KEY",
+          models: freshBase.map(toPiModel),
+        });
       }
     });
   });
