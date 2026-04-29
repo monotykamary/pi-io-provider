@@ -4,6 +4,10 @@
  * Registers IO Intelligence (io.net) as a custom provider using the openai-completions API.
  * Base URL: https://api.intelligence.io.solutions/api/v1
  *
+ * Model resolution strategy: Stale-While-Revalidate
+ *   1. Serve stale immediately: disk cache → embedded models.json (zero-latency)
+ *   2. Revalidate in background: live API /models → merge with embedded → cache → hot-swap
+ *
  * Usage:
  *   # Option 1: Store in auth.json (recommended)
  *   # Add to ~/.pi/agent/auth.json:
@@ -30,9 +34,13 @@
  */
 
 import type { ExtensionAPI, ModelRegistry } from "@mariozechner/pi-coding-agent";
-import models from "./models.json" with { type: "json" };
+import modelsData from "./models.json" with { type: "json" };
+import fs from "fs";
+import os from "os";
+import path from "path";
 
-// Pi's expected model structure
+// ─── Types ────────────────────────────────────────────────────────────────────
+
 interface PiModel {
   id: string;
   name: string;
@@ -48,72 +56,158 @@ interface PiModel {
   maxTokens: number;
 }
 
-// IO Intelligence model data structure from JSON
 interface IOModel {
   id: string;
   name: string;
   reasoning: boolean;
   input: ("text" | "image")[];
   cost: {
-    input: number;      // $ per million input tokens
-    output: number;     // $ per million output tokens
-    cacheRead: number;  // $ per million cached tokens
-    cacheWrite: number; // $ per million cache write tokens
+    input: number;
+    output: number;
+    cacheRead: number;
+    cacheWrite: number;
   };
   contextWindow: number;
   maxTokens: number;
 }
 
-const piModels = (models as IOModel[]).map((model): PiModel => ({
-  id: model.id,
-  name: model.name,
-  reasoning: model.reasoning,
-  input: model.input,
-  cost: {
-    input: model.cost.input,
-    output: model.cost.output,
-    cacheRead: model.cost.cacheRead,
-    cacheWrite: model.cost.cacheWrite,
-  },
-  contextWindow: model.contextWindow,
-  maxTokens: model.maxTokens,
-}));
+// ─── Model Transformation ─────────────────────────────────────────────────────
+
+function toPiModel(model: IOModel): PiModel {
+  return {
+    id: model.id,
+    name: model.name,
+    reasoning: model.reasoning,
+    input: model.input,
+    cost: {
+      input: model.cost.input,
+      output: model.cost.output,
+      cacheRead: model.cost.cacheRead,
+      cacheWrite: model.cost.cacheWrite,
+    },
+    contextWindow: model.contextWindow,
+    maxTokens: model.maxTokens,
+  };
+}
+
+// ─── Stale-While-Revalidate Model Sync ────────────────────────────────────────
+
+const PROVIDER_ID = "io-intelligence";
+const BASE_URL = "https://api.intelligence.io.solutions/api/v1";
+const MODELS_URL = `${BASE_URL}/models`;
+const CACHE_DIR = path.join(os.homedir(), ".pi", "agent", "cache");
+const CACHE_PATH = path.join(CACHE_DIR, `${PROVIDER_ID}-models.json`);
+const LIVE_FETCH_TIMEOUT_MS = 8000;
+
+/** Transform a model from the IO Intelligence /v1/models API to IOModel format. */
+function transformApiModel(apiModel: any): IOModel | null {
+  const hasVision = apiModel.supports_images_input === true;
+  // IO returns per-token pricing, convert to per-million
+  const toPerM = (v: any) => (typeof v === "number" ? v * 1_000_000 : 0);
+  return {
+    id: apiModel.id,
+    name: apiModel.name || apiModel.id,
+    reasoning: false, // IO doesn't expose reasoning capability in API
+    input: hasVision ? ["text", "image"] as ("text" | "image")[] : ["text"] as ("text" | "image")[],
+    cost: {
+      input: toPerM(apiModel.input_token_price),
+      output: toPerM(apiModel.output_token_price),
+      cacheRead: toPerM(apiModel.cache_read_token_price),
+      cacheWrite: toPerM(apiModel.cache_write_token_price),
+    },
+    contextWindow: apiModel.context_window || 131072,
+    maxTokens: apiModel.max_tokens || 0,
+  };
+}
+
+async function fetchLiveModels(apiKey: string): Promise<IOModel[] | null> {
+  try {
+    const response = await fetch(MODELS_URL, {
+      headers: { Authorization: `Bearer ${apiKey}` },
+      signal: AbortSignal.timeout(LIVE_FETCH_TIMEOUT_MS),
+    });
+    if (!response.ok) return null;
+    const data = await response.json();
+    const apiModels = Array.isArray(data) ? data : (data.data || []);
+    if (!Array.isArray(apiModels) || apiModels.length === 0) return null;
+    return apiModels.map(transformApiModel).filter((m): m is IOModel => m !== null);
+  } catch {
+    return null;
+  }
+}
+
+function loadCachedModels(): IOModel[] | null {
+  try {
+    const data = JSON.parse(fs.readFileSync(CACHE_PATH, "utf8"));
+    return Array.isArray(data) ? data : null;
+  } catch {
+    return null;
+  }
+}
+
+function cacheModels(models: IOModel[]): void {
+  try {
+    fs.mkdirSync(CACHE_DIR, { recursive: true });
+    fs.writeFileSync(CACHE_PATH, JSON.stringify(models, null, 2) + "\n");
+  } catch {
+    // Cache write failure is non-fatal
+  }
+}
+
+function mergeWithEmbedded(liveModels: IOModel[], embeddedModels: IOModel[]): IOModel[] {
+  const embeddedIds = new Set(embeddedModels.map(m => m.id));
+  const result = [...embeddedModels];
+  for (const model of liveModels) {
+    if (!embeddedIds.has(model.id)) {
+      result.push(model);
+    }
+  }
+  return result;
+}
+
+function loadStaleModels(embeddedModels: IOModel[]): IOModel[] {
+  const cached = loadCachedModels();
+  if (cached && cached.length > 0) return cached;
+  return embeddedModels;
+}
+
+async function revalidateModels(apiKey: string | undefined, embeddedModels: IOModel[]): Promise<IOModel[] | null> {
+  if (!apiKey) return null;
+  const liveModels = await fetchLiveModels(apiKey);
+  if (!liveModels || liveModels.length === 0) return null;
+  const merged = mergeWithEmbedded(liveModels, embeddedModels);
+  cacheModels(merged);
+  return merged;
+}
 
 // ─── API Key Resolution (via ModelRegistry) ────────────────────────────────────
 
-/**
- * Cached API key resolved from ModelRegistry.
- *
- * Pi's core resolves the key via ModelRegistry before making requests,
- * but we also cache it here so we can resolve it in contexts where the resolved
- * key isn't directly available and to make the dependency explicit.
- *
- * Resolution order (via ModelRegistry.getApiKeyForProvider):
- *   1. Runtime override (CLI --api-key)
- *   2. auth.json stored credentials (manual entry in ~/.pi/agent/auth.json)
- *   3. OAuth tokens (auto-refreshed)
- *   4. Environment variable (from auth.json or provider config)
- */
 let cachedApiKey: string | undefined;
 
-/**
- * Resolve the IO Intelligence API key via ModelRegistry and cache the result.
- * Called on session_start and whenever ctx.modelRegistry is available.
- */
 async function resolveApiKey(modelRegistry: ModelRegistry): Promise<void> {
   cachedApiKey = await modelRegistry.getApiKeyForProvider("io-intelligence") ?? undefined;
 }
 
+// ─── Extension Entry Point ────────────────────────────────────────────────────
+
 export default function (pi: ExtensionAPI) {
-  // Resolve API key via ModelRegistry on session start
-  pi.on("session_start", async (_event, ctx) => {
-    await resolveApiKey(ctx.modelRegistry);
-  });
+  const embeddedModels = modelsData as IOModel[];
+  const staleBase = loadStaleModels(embeddedModels);
+  const staleModels = staleBase.map(toPiModel);
 
   pi.registerProvider("io-intelligence", {
-    baseUrl: "https://api.intelligence.io.solutions/api/v1",
+    baseUrl: BASE_URL,
     apiKey: "IOINTELLIGENCE_API_KEY",
     api: "openai-completions",
-    models: piModels,
+    models: staleModels,
+  });
+
+  pi.on("session_start", async (_event, ctx) => {
+    await resolveApiKey(ctx.modelRegistry);
+    revalidateModels(cachedApiKey, embeddedModels).then((freshBase) => {
+      if (freshBase) {
+        pi.registerProvider("io-intelligence", { models: freshBase.map(toPiModel) });
+      }
+    });
   });
 }
