@@ -120,11 +120,11 @@ function transformApiModel(apiModel: any): IOModel | null {
   };
 }
 
-async function fetchLiveModels(apiKey: string): Promise<IOModel[] | null> {
+async function fetchLiveModels(apiKey: string, signal?: AbortSignal): Promise<IOModel[] | null> {
   try {
     const response = await fetch(MODELS_URL, {
       headers: { Authorization: `Bearer ${apiKey}` },
-      signal: AbortSignal.timeout(LIVE_FETCH_TIMEOUT_MS),
+      signal: signal ? AbortSignal.any([AbortSignal.timeout(LIVE_FETCH_TIMEOUT_MS), signal]) : AbortSignal.timeout(LIVE_FETCH_TIMEOUT_MS),
     });
     if (!response.ok) return null;
     const data = await response.json();
@@ -171,9 +171,9 @@ function loadStaleModels(embeddedModels: IOModel[]): IOModel[] {
   return embeddedModels;
 }
 
-async function revalidateModels(apiKey: string | undefined, embeddedModels: IOModel[]): Promise<IOModel[] | null> {
+async function revalidateModels(apiKey: string | undefined, embeddedModels: IOModel[], signal?: AbortSignal): Promise<IOModel[] | null> {
   if (!apiKey) return null;
-  const liveModels = await fetchLiveModels(apiKey);
+  const liveModels = await fetchLiveModels(apiKey, signal);
   if (!liveModels || liveModels.length === 0) return null;
   const merged = mergeWithEmbedded(liveModels, embeddedModels);
   cacheModels(merged);
@@ -183,6 +183,7 @@ async function revalidateModels(apiKey: string | undefined, embeddedModels: IOMo
 // ─── API Key Resolution (via ModelRegistry) ────────────────────────────────────
 
 let cachedApiKey: string | undefined;
+let revalidateAbort: AbortController | null = null;
 
 async function resolveApiKey(modelRegistry: ModelRegistry): Promise<void> {
   cachedApiKey = await modelRegistry.getApiKeyForProvider("io-intelligence") ?? undefined;
@@ -203,9 +204,12 @@ export default function (pi: ExtensionAPI) {
   });
 
   pi.on("session_start", async (_event, ctx) => {
+    revalidateAbort?.abort();
+    revalidateAbort = new AbortController();
+    const signal = revalidateAbort.signal;
     await resolveApiKey(ctx.modelRegistry);
-    revalidateModels(cachedApiKey, embeddedModels).then((freshBase) => {
-      if (freshBase) {
+    revalidateModels(cachedApiKey, embeddedModels, signal).then((freshBase) => {
+      if (freshBase && !signal.aborted) {
         pi.registerProvider("io-intelligence", {
           baseUrl: BASE_URL,
           apiKey: "IOINTELLIGENCE_API_KEY",
@@ -214,5 +218,9 @@ export default function (pi: ExtensionAPI) {
         });
       }
     });
+  });
+
+  pi.on("session_shutdown", () => {
+    revalidateAbort?.abort();
   });
 }
