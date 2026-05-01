@@ -42,35 +42,48 @@ function fetchJSON(url, headers = {}) {
 
 // ─── Model transformation ──────────────────────────────────────────────────
 
-const REASONING_IDS = ['DeepSeek-R1', 'Kimi-K2-Thinking'];
-
 /** Clean up the display name from the API. */
 function cleanName(apiName, apiId) {
   // API returns names like "MoonshotAI: Kimi K2.6" or "MiniMaxAI/MiniMax-M2.5"
-  // We want clean names like "Kimi K2.6", "DeepSeek R1 0528", "GLM 5.1"
-  // Strategy: extract the core model name from the ID if the API name is messy
-
-  // If the name has a colon prefix like "MoonshotAI: Kimi K2.6", strip the prefix
   let name = apiName;
   const colonIdx = name.indexOf(': ');
   if (colonIdx > 0 && colonIdx < 25) {
     name = name.substring(colonIdx + 2);
   }
-
-  // If name is just a slug-like ID (e.g. "MiniMaxAI/MiniMax-M2.5"), build a better name
   if (name.includes('/') && !name.includes(' ')) {
-    // Use the part after the slash, replacing hyphens with spaces
     const parts = name.split('/');
     name = parts[parts.length - 1].replace(/-/g, ' ');
   }
-
-  // Special case: "R1 0528" → "DeepSeek R1 0528"
   if (name === 'R1 0528') name = 'DeepSeek R1 0528';
-
   return name;
 }
 
-function convertModel(apiModel) {
+function convertModel(apiModel, existingModelsMap) {
+  const id = apiModel.id;
+
+  // Preserve existing curated data (reasoning, compat, etc.)
+  if (existingModelsMap[id]) {
+    const existing = { ...existingModelsMap[id] };
+    // Update mutable fields from API
+    const ctx = apiModel.context_window || 0;
+    const maxTok = apiModel.max_tokens || ctx;
+    const priceIn = (apiModel.input_token_price || 0) * 1_000_000;
+    const priceOut = (apiModel.output_token_price || 0) * 1_000_000;
+    const cacheRead = (apiModel.cache_read_token_price || 0) * 1_000_000;
+    const cacheWrite = (apiModel.cache_write_token_price || 0) * 1_000_000;
+    if (ctx > 0) existing.contextWindow = ctx;
+    if (maxTok > 0) existing.maxTokens = maxTok;
+    if (priceIn > 0) existing.cost.input = Math.round(priceIn * 100) / 100;
+    if (priceOut > 0) existing.cost.output = Math.round(priceOut * 100) / 100;
+    if (cacheRead > 0) existing.cost.cacheRead = Math.round(cacheRead * 100) / 100;
+    if (cacheWrite > 0) existing.cost.cacheWrite = Math.round(cacheWrite * 100) / 100;
+    if (apiModel.supports_images_input && !existing.input.includes('image')) {
+      existing.input = ['text', 'image'];
+    }
+    return existing;
+  }
+
+  // New model — build from API data + sensible defaults
   const ctx = apiModel.context_window || 0;
   const maxTok = apiModel.max_tokens || ctx;
   const input = ['text'];
@@ -81,12 +94,10 @@ function convertModel(apiModel) {
   const cacheRead = (apiModel.cache_read_token_price || 0) * 1_000_000;
   const cacheWrite = (apiModel.cache_write_token_price || 0) * 1_000_000;
 
-  const isReasoning = REASONING_IDS.some(r => apiModel.id.includes(r));
-
   return {
-    id: apiModel.id,
-    name: cleanName(apiModel.name, apiModel.id),
-    reasoning: isReasoning,
+    id,
+    name: cleanName(apiModel.name, id),
+    reasoning: false,
     input,
     cost: {
       input: Math.round(priceIn * 100) / 100,
@@ -275,7 +286,19 @@ async function main() {
     const apiModels = data.data || [];
     console.log(`Total models from API: ${apiModels.length}`);
 
-    const models = apiModels.map(convertModel);
+    // Load existing models.json — source of truth for curated specs
+    let existingModels = [];
+    try {
+      existingModels = JSON.parse(fs.readFileSync(MODELS_PATH, 'utf8'));
+    } catch (e) {
+      // File might not exist or be invalid
+    }
+    const existingModelsMap = {};
+    for (const m of existingModels) {
+      existingModelsMap[m.id] = m;
+    }
+
+    const models = apiModels.map(m => convertModel(m, existingModelsMap));
     console.log(`Converted ${models.length} models`);
 
     // Save models.json
