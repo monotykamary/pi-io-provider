@@ -22,25 +22,25 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Llama 4 Maverick 17B 128E Instruct FP8 | `meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8` | 430K | 430K | ✅ | ❌ | ✅ | $0.15 | $0.60 |
 | Mistral Large Instruct 2411 | `mistralai/Mistral-Large-Instruct-2411` | 128K | 128K | ✅ | ❌ | ✅ | $2.00 | $6.00 |
 | Kimi K2.5 | `moonshotai/Kimi-K2.5` | 262K | 262K | ✅ | ❌ | ✅ | $0.44 | $2.00 |
-| Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ❌ | ✅ | $0.80 | $4.00 |
+| Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ❌ | ✅ | $0.74 | $3.49 |
 | Qwen2.5 VL 32B Instruct | `Qwen/Qwen2.5-VL-32B-Instruct` | 32K | 32K | ✅ | ❌ | ✅ | $0.05 | $0.22 |
 | DeepSeek V3.2 | `deepseek-ai/DeepSeek-V3.2` | 164K | 164K | ❌ | ❌ | ✅ | $0.25 | $0.38 |
 | DeepSeek V4 Flash | `deepseek-ai/DeepSeek-V4-Flash` | 65K | 65K | ❌ | ❌ | ✅ | $1.55 | $2.28 |
-| DeepSeek V4 Pro | `deepseek-ai/DeepSeek-V4-Pro` | 800K | 131K | ❌ | ❌ | ✅ | $4.45 | $5.50 |
+| DeepSeek V4 Pro | `deepseek-ai/DeepSeek-V4-Pro` | 600K | 131K | ❌ | ❌ | ✅ | $4.45 | $5.50 |
 | Gemma 4 26B A4B | `google/gemma-4-26b-a4b-it` | 262K | 262K | ❌ | ❌ | ✅ | $0.14 | $0.50 |
 | Qwen3 Coder 480B A35B Instruct INT4 Mixed AR | `Intel/Qwen3-Coder-480B-A35B-Instruct-int4-mixed-ar` | 106K | 106K | ❌ | ❌ | ✅ | $0.22 | $0.95 |
 | Llama 3.3 70B Instruct | `meta-llama/Llama-3.3-70B-Instruct` | 128K | 128K | ❌ | ❌ | ✅ | $0.10 | $0.32 |
-| MiniMax M2.5 | `MiniMaxAI/MiniMax-M2.5` | 197K | 197K | ❌ | ❌ | ✅ | $0.12 | $0.99 |
+| MiniMax M2.5 | `MiniMaxAI/MiniMax-M2.5` | 197K | 197K | ❌ | ❌ | ✅ | $0.20 | $1.20 |
 | Mistral Nemo Instruct 2407 | `mistralai/Mistral-Nemo-Instruct-2407` | 128K | 128K | ❌ | ❌ | ✅ | $0.02 | $0.04 |
 | Kimi K2 Instruct 0905 | `moonshotai/Kimi-K2-Instruct-0905` | 262K | 262K | ❌ | ❌ | ✅ | $0.39 | $1.90 |
 | gpt-oss-120b | `openai/gpt-oss-120b` | 131K | 131K | ❌ | ❌ | ✅ | $0.10 | $0.40 |
 | gpt-oss-20b | `openai/gpt-oss-20b` | 64K | 64K | ❌ | ❌ | ✅ | $0.02 | $0.06 |
 | Qwen3 Next 80B A3B Instruct | `Qwen/Qwen3-Next-80B-A3B-Instruct` | 262K | 262K | ❌ | ❌ | ✅ | $0.06 | $0.60 |
 | GLM 4.6 | `zai-org/GLM-4.6` | 200K | 200K | ❌ | ❌ | ✅ | $0.35 | $1.50 |
-| GLM 4.7 | `zai-org/GLM-4.7` | 203K | 203K | ❌ | ❌ | ✅ | $0.30 | $1.40 |
+| GLM 4.7 | `zai-org/GLM-4.7` | 203K | 203K | ❌ | ❌ | ✅ | $0.50 | $2.00 |
 | GLM 4.7 Flash | `zai-org/GLM-4.7-Flash` | 200K | 200K | ❌ | ❌ | ✅ | $0.07 | $0.40 |
 | GLM 5 | `zai-org/GLM-5` | 203K | 203K | ❌ | ❌ | ✅ | $1.00 | $3.00 |
-| GLM 5.1 | `zai-org/GLM-5.1` | 203K | 131K | ❌ | ❌ | ✅ | $1.06 | $4.40 |
+| GLM 5.1 | `zai-org/GLM-5.1` | 203K | 131K | ❌ | ❌ | ✅ | $1.50 | $4.40 |
 
 *Costs are per million tokens. Cache read/write pricing available on most models.*
 
