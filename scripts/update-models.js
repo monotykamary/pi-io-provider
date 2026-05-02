@@ -20,6 +20,8 @@ const __dirname = path.dirname(__filename);
 
 const API_BASE = 'https://api.intelligence.io.solutions/api/v1';
 const MODELS_PATH = path.join(process.cwd(), 'models.json');
+const PATCH_PATH = path.join(process.cwd(), 'patch.json');
+const CUSTOM_MODELS_PATH = path.join(process.cwd(), 'custom-models.json');
 
 // ─── HTTP helpers ───────────────────────────────────────────────────────────
 
@@ -108,6 +110,53 @@ function convertModel(apiModel, existingModelsMap) {
     contextWindow: ctx,
     maxTokens: maxTok,
   };
+}
+
+// ─── Patch & Custom Models ──────────────────────────────────────────────────
+
+function applyPatch(model, patch) {
+  const result = { ...model };
+  if (patch.name !== undefined) result.name = patch.name;
+  if (patch.reasoning !== undefined) result.reasoning = patch.reasoning;
+  if (patch.input !== undefined) result.input = patch.input;
+  if (patch.contextWindow !== undefined) result.contextWindow = patch.contextWindow;
+  if (patch.maxTokens !== undefined) result.maxTokens = patch.maxTokens;
+  if (patch.cost) {
+    result.cost = {
+      input: patch.cost.input ?? result.cost.input,
+      output: patch.cost.output ?? result.cost.output,
+      cacheRead: patch.cost.cacheRead ?? result.cost.cacheRead,
+      cacheWrite: patch.cost.cacheWrite ?? result.cost.cacheWrite,
+    };
+  }
+  return result;
+}
+
+function buildModels(baseModels, customModels, patchData) {
+  const modelMap = new Map();
+  for (const model of baseModels) {
+    modelMap.set(model.id, model);
+  }
+  for (const [id, patchEntry] of Object.entries(patchData)) {
+    const existing = modelMap.get(id);
+    if (existing) {
+      modelMap.set(id, applyPatch(existing, patchEntry));
+    }
+  }
+  for (const model of customModels) {
+    const existing = modelMap.get(model.id);
+    const patchEntry = patchData[model.id];
+    if (existing && patchEntry) {
+      modelMap.set(model.id, applyPatch(model, patchEntry));
+    } else if (existing) {
+      modelMap.set(model.id, model);
+    } else if (patchEntry) {
+      modelMap.set(model.id, applyPatch(model, patchEntry));
+    } else {
+      modelMap.set(model.id, model);
+    }
+  }
+  return Array.from(modelMap.values());
 }
 
 // ─── README generation ──────────────────────────────────────────────────────
@@ -301,12 +350,25 @@ async function main() {
     const models = apiModels.map(m => convertModel(m, existingModelsMap));
     console.log(`Converted ${models.length} models`);
 
-    // Save models.json
+    // Save models.json (pure API output, no patch/custom baked in)
     fs.writeFileSync(MODELS_PATH, JSON.stringify(models, null, 2) + '\n');
     console.log(`✓ Saved ${models.length} models to models.json`);
 
+    // Build full model list for README: base → patch → custom
+    let patchData = {};
+    let customModels = [];
+    try {
+      patchData = JSON.parse(fs.readFileSync(PATCH_PATH, 'utf8'));
+    } catch {}
+    try {
+      customModels = JSON.parse(fs.readFileSync(CUSTOM_MODELS_PATH, 'utf8'));
+      if (!Array.isArray(customModels)) customModels = [];
+    } catch {}
+    const readmeModels = buildModels(models, customModels, patchData);
+    readmeModels.sort((a, b) => a.name.localeCompare(b.name));
+
     // Update README
-    const readme = generateReadme(models);
+    const readme = generateReadme(readmeModels);
     fs.writeFileSync(path.join(process.cwd(), 'README.md'), readme);
     console.log(`✓ Updated README.md`);
 

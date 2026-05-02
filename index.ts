@@ -7,6 +7,9 @@
  * Model resolution strategy: Stale-While-Revalidate
  *   1. Serve stale immediately: disk cache → embedded models.json (zero-latency)
  *   2. Revalidate in background: live API /models → merge with embedded → cache → hot-swap
+ *   3. patch.json + custom-models.json applied on top of whichever source won
+ *
+ * Merge order: [live|cache|embedded] → apply patch.json → merge custom-models.json
  *
  * Usage:
  *   # Option 1: Store in auth.json (recommended)
@@ -35,6 +38,8 @@
 
 import type { ExtensionAPI, ModelRegistry } from "@mariozechner/pi-coding-agent";
 import modelsData from "./models.json" with { type: "json" };
+import customModelsData from "./custom-models.json" with { type: "json" };
+import patchData from "./patch.json" with { type: "json" };
 import fs from "fs";
 import os from "os";
 import path from "path";
@@ -69,6 +74,78 @@ interface IOModel {
   };
   contextWindow: number;
   maxTokens: number;
+}
+
+interface PatchEntry {
+  name?: string;
+  reasoning?: boolean;
+  input?: string[];
+  cost?: {
+    input?: number;
+    output?: number;
+    cacheRead?: number;
+    cacheWrite?: number;
+  };
+  contextWindow?: number;
+  maxTokens?: number;
+  compat?: Record<string, unknown>;
+}
+
+type PatchData = Record<string, PatchEntry>;
+
+// ─── Patch & Custom Model Merging ─────────────────────────────────────────────
+
+function applyPatch(model: IOModel, patch: PatchEntry): IOModel {
+  const result = { ...model };
+
+  if (patch.name !== undefined) result.name = patch.name;
+  if (patch.reasoning !== undefined) result.reasoning = patch.reasoning;
+  if (patch.input !== undefined) result.input = patch.input as ("text" | "image")[];
+  if (patch.contextWindow !== undefined) result.contextWindow = patch.contextWindow;
+  if (patch.maxTokens !== undefined) result.maxTokens = patch.maxTokens;
+
+  if (patch.cost) {
+    result.cost = {
+      input: patch.cost.input ?? result.cost.input,
+      output: patch.cost.output ?? result.cost.output,
+      cacheRead: patch.cost.cacheRead ?? result.cost.cacheRead,
+      cacheWrite: patch.cost.cacheWrite ?? result.cost.cacheWrite,
+    };
+  }
+
+  return result;
+}
+
+/** Full pipeline: base models → patch → custom → result */
+function buildModels(base: IOModel[], custom: IOModel[], patch: PatchData): IOModel[] {
+  const modelMap = new Map<string, IOModel>();
+
+  for (const model of base) {
+    modelMap.set(model.id, model);
+  }
+
+  for (const [id, patchEntry] of Object.entries(patch)) {
+    const existing = modelMap.get(id);
+    if (existing) {
+      modelMap.set(id, applyPatch(existing, patchEntry));
+    }
+  }
+
+  for (const model of custom) {
+    const existing = modelMap.get(model.id);
+    const patchEntry = patch[model.id];
+    if (existing && patchEntry) {
+      modelMap.set(model.id, applyPatch(model, patchEntry));
+    } else if (existing) {
+      modelMap.set(model.id, model);
+    } else if (patchEntry) {
+      modelMap.set(model.id, applyPatch(model, patchEntry));
+    } else {
+      modelMap.set(model.id, model);
+    }
+  }
+
+  return Array.from(modelMap.values());
 }
 
 // ─── Model Transformation ─────────────────────────────────────────────────────
@@ -193,8 +270,11 @@ async function resolveApiKey(modelRegistry: ModelRegistry): Promise<void> {
 
 export default function (pi: ExtensionAPI) {
   const embeddedModels = modelsData as IOModel[];
+  const customModels = customModelsData as IOModel[];
+  const patches = patchData as PatchData;
+
   const staleBase = loadStaleModels(embeddedModels);
-  const staleModels = staleBase.map(toPiModel);
+  const staleModels = buildModels(staleBase, customModels, patches).map(toPiModel);
 
   pi.registerProvider("io-intelligence", {
     baseUrl: BASE_URL,
@@ -214,7 +294,7 @@ export default function (pi: ExtensionAPI) {
           baseUrl: BASE_URL,
           apiKey: "IOINTELLIGENCE_API_KEY",
           api: "openai-completions",
-          models: freshBase.map(toPiModel),
+          models: buildModels(freshBase, customModels, patches).map(toPiModel),
         });
       }
     });
