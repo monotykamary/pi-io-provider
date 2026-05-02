@@ -28,7 +28,7 @@
       "cacheRead": 0.35,
       "cacheWrite": 0
     },
-    "contextWindow": 800000,
+    "contextWindow": 600000,
     "maxTokens": 131072
   },
   {
@@ -40,13 +40,13 @@
       "image"
     ],
     "cost": {
-      "input": 0.8,
-      "output": 4,
-      "cacheRead": 0.25,
+      "input": 0.74,
+      "output": 3.49,
+      "cacheRead": 0.14,
       "cacheWrite": 0
     },
-    "contextWindow": 262144,
-    "maxTokens": 262144
+    "contextWindow": 262142,
+    "maxTokens": 262142
   },
   {
     "id": "zai-org/GLM-5.1",
@@ -56,7 +56,7 @@
       "text"
     ],
     "cost": {
-      "input": 1.06,
+      "input": 1.5,
       "output": 4.4,
       "cacheRead": 0.26,
       "cacheWrite": 0
@@ -72,8 +72,8 @@
       "text"
     ],
     "cost": {
-      "input": 0.12,
-      "output": 0.99,
+      "input": 0.2,
+      "output": 1.2,
       "cacheRead": 0.1,
       "cacheWrite": 0
     },
@@ -185,9 +185,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.3,
-      "output": 1.4,
-      "cacheRead": 0.15,
+      "input": 0.5,
+      "output": 2,
+      "cacheRead": 0.35,
       "cacheWrite": 0.6
     },
     "contextWindow": 202752,
