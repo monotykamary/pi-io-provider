@@ -129,6 +129,15 @@ function applyPatch(model, patch) {
       cacheWrite: patch.cost.cacheWrite ?? result.cost.cacheWrite,
     };
   }
+  if (patch.compat) {
+    result.compat = { ...(result.compat || {}), ...patch.compat };
+  }
+  if (!result.reasoning && result.compat?.thinkingFormat) {
+    delete result.compat.thinkingFormat;
+  }
+  if (result.compat && Object.keys(result.compat).length === 0) {
+    delete result.compat;
+  }
   return result;
 }
 
