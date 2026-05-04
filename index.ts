@@ -46,7 +46,7 @@ import path from "path";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-interface PiModel {
+interface JsonModel {
   id: string;
   name: string;
   reasoning: boolean;
@@ -59,21 +59,13 @@ interface PiModel {
   };
   contextWindow: number;
   maxTokens: number;
-}
-
-interface IOModel {
-  id: string;
-  name: string;
-  reasoning: boolean;
-  input: ("text" | "image")[];
-  cost: {
-    input: number;
-    output: number;
-    cacheRead: number;
-    cacheWrite: number;
+  compat?: {
+    supportsDeveloperRole?: boolean;
+    supportsStore?: boolean;
+    maxTokensField?: "max_completion_tokens" | "max_tokens";
+    thinkingFormat?: "openai" | "zai" | "qwen" | "qwen-chat-template";
+    supportsReasoningEffort?: boolean;
   };
-  contextWindow: number;
-  maxTokens: number;
 }
 
 interface PatchEntry {
@@ -93,14 +85,14 @@ interface PatchEntry {
 
 type PatchData = Record<string, PatchEntry>;
 
-// ─── Patch & Custom Model Merging ─────────────────────────────────────────────
+// ─── Patch Application ────────────────────────────────────────────────────────
 
-function applyPatch(model: IOModel, patch: PatchEntry): IOModel {
+function applyPatch(model: JsonModel, patch: PatchEntry): JsonModel {
   const result = { ...model };
 
   if (patch.name !== undefined) result.name = patch.name;
   if (patch.reasoning !== undefined) result.reasoning = patch.reasoning;
-  if (patch.input !== undefined) result.input = patch.input as ("text" | "image")[];
+  if (patch.input !== undefined) result.input = patch.input;
   if (patch.contextWindow !== undefined) result.contextWindow = patch.contextWindow;
   if (patch.maxTokens !== undefined) result.maxTokens = patch.maxTokens;
 
@@ -112,13 +104,23 @@ function applyPatch(model: IOModel, patch: PatchEntry): IOModel {
       cacheWrite: patch.cost.cacheWrite ?? result.cost.cacheWrite,
     };
   }
+  if (patch.compat) {
+    result.compat = { ...(result.compat || {}), ...patch.compat };
+  }
+
+  if (!result.reasoning && result.compat?.thinkingFormat) {
+    delete result.compat.thinkingFormat;
+  }
+  if (result.compat && Object.keys(result.compat).length === 0) {
+    delete result.compat;
+  }
 
   return result;
 }
 
 /** Full pipeline: base models → patch → custom → result */
-function buildModels(base: IOModel[], custom: IOModel[], patch: PatchData): IOModel[] {
-  const modelMap = new Map<string, IOModel>();
+function buildModels(base: JsonModel[], custom: JsonModel[], patch: PatchData): JsonModel[] {
+  const modelMap = new Map<string, JsonModel>();
 
   for (const model of base) {
     modelMap.set(model.id, model);
@@ -148,25 +150,6 @@ function buildModels(base: IOModel[], custom: IOModel[], patch: PatchData): IOMo
   return Array.from(modelMap.values());
 }
 
-// ─── Model Transformation ─────────────────────────────────────────────────────
-
-function toPiModel(model: IOModel): PiModel {
-  return {
-    id: model.id,
-    name: model.name,
-    reasoning: model.reasoning,
-    input: model.input,
-    cost: {
-      input: model.cost.input,
-      output: model.cost.output,
-      cacheRead: model.cost.cacheRead,
-      cacheWrite: model.cost.cacheWrite,
-    },
-    contextWindow: model.contextWindow,
-    maxTokens: model.maxTokens,
-  };
-}
-
 // ─── Stale-While-Revalidate Model Sync ────────────────────────────────────────
 
 const PROVIDER_ID = "io-intelligence";
@@ -176,8 +159,8 @@ const CACHE_DIR = path.join(os.homedir(), ".pi", "agent", "cache");
 const CACHE_PATH = path.join(CACHE_DIR, `${PROVIDER_ID}-models.json`);
 const LIVE_FETCH_TIMEOUT_MS = 8000;
 
-/** Transform a model from the IO Intelligence /v1/models API to IOModel format. */
-function transformApiModel(apiModel: any): IOModel | null {
+/** Transform a model from the IO Intelligence /v1/models API to JsonModel format. */
+function transformApiModel(apiModel: any): JsonModel | null {
   const hasVision = apiModel.supports_images_input === true;
   // IO returns per-token pricing, convert to per-million
   const toPerM = (v: any) => (typeof v === "number" ? v * 1_000_000 : 0);
@@ -185,7 +168,7 @@ function transformApiModel(apiModel: any): IOModel | null {
     id: apiModel.id,
     name: apiModel.name || apiModel.id,
     reasoning: false, // IO doesn't expose reasoning capability in API
-    input: hasVision ? ["text", "image"] as ("text" | "image")[] : ["text"] as ("text" | "image")[],
+    input: hasVision ? ["text", "image"] : ["text"],
     cost: {
       input: toPerM(apiModel.input_token_price),
       output: toPerM(apiModel.output_token_price),
@@ -197,7 +180,7 @@ function transformApiModel(apiModel: any): IOModel | null {
   };
 }
 
-async function fetchLiveModels(apiKey: string, signal?: AbortSignal): Promise<IOModel[] | null> {
+async function fetchLiveModels(apiKey: string, signal?: AbortSignal): Promise<JsonModel[] | null> {
   try {
     const response = await fetch(MODELS_URL, {
       headers: { Authorization: `Bearer ${apiKey}` },
@@ -207,13 +190,13 @@ async function fetchLiveModels(apiKey: string, signal?: AbortSignal): Promise<IO
     const data = await response.json();
     const apiModels = Array.isArray(data) ? data : (data.data || []);
     if (!Array.isArray(apiModels) || apiModels.length === 0) return null;
-    return apiModels.map(transformApiModel).filter((m): m is IOModel => m !== null);
+    return apiModels.map(transformApiModel).filter((m): m is JsonModel => m !== null);
   } catch {
     return null;
   }
 }
 
-function loadCachedModels(): IOModel[] | null {
+function loadCachedModels(): JsonModel[] | null {
   try {
     const data = JSON.parse(fs.readFileSync(CACHE_PATH, "utf8"));
     return Array.isArray(data) ? data : null;
@@ -222,7 +205,7 @@ function loadCachedModels(): IOModel[] | null {
   }
 }
 
-function cacheModels(models: IOModel[]): void {
+function cacheModels(models: JsonModel[]): void {
   try {
     fs.mkdirSync(CACHE_DIR, { recursive: true });
     fs.writeFileSync(CACHE_PATH, JSON.stringify(models, null, 2) + "\n");
@@ -231,7 +214,7 @@ function cacheModels(models: IOModel[]): void {
   }
 }
 
-function mergeWithEmbedded(liveModels: IOModel[], embeddedModels: IOModel[]): IOModel[] {
+function mergeWithEmbedded(liveModels: JsonModel[], embeddedModels: JsonModel[]): JsonModel[] {
   const embeddedIds = new Set(embeddedModels.map(m => m.id));
   const result = [...embeddedModels];
   for (const model of liveModels) {
@@ -242,13 +225,13 @@ function mergeWithEmbedded(liveModels: IOModel[], embeddedModels: IOModel[]): IO
   return result;
 }
 
-function loadStaleModels(embeddedModels: IOModel[]): IOModel[] {
+function loadStaleModels(embeddedModels: JsonModel[]): JsonModel[] {
   const cached = loadCachedModels();
   if (cached && cached.length > 0) return cached;
   return embeddedModels;
 }
 
-async function revalidateModels(apiKey: string | undefined, embeddedModels: IOModel[], signal?: AbortSignal): Promise<IOModel[] | null> {
+async function revalidateModels(apiKey: string | undefined, embeddedModels: JsonModel[], signal?: AbortSignal): Promise<JsonModel[] | null> {
   if (!apiKey) return null;
   const liveModels = await fetchLiveModels(apiKey, signal);
   if (!liveModels || liveModels.length === 0) return null;
@@ -269,12 +252,12 @@ async function resolveApiKey(modelRegistry: ModelRegistry): Promise<void> {
 // ─── Extension Entry Point ────────────────────────────────────────────────────
 
 export default function (pi: ExtensionAPI) {
-  const embeddedModels = modelsData as IOModel[];
-  const customModels = customModelsData as IOModel[];
+  const embeddedModels = modelsData as JsonModel[];
+  const customModels = customModelsData as JsonModel[];
   const patches = patchData as PatchData;
 
   const staleBase = loadStaleModels(embeddedModels);
-  const staleModels = buildModels(staleBase, customModels, patches).map(toPiModel);
+  const staleModels = buildModels(staleBase, customModels, patches);
 
   pi.registerProvider("io-intelligence", {
     baseUrl: BASE_URL,
@@ -294,7 +277,7 @@ export default function (pi: ExtensionAPI) {
           baseUrl: BASE_URL,
           apiKey: "IOINTELLIGENCE_API_KEY",
           api: "openai-completions",
-          models: buildModels(freshBase, customModels, patches).map(toPiModel),
+          models: buildModels(freshBase, customModels, patches),
         });
       }
     });
