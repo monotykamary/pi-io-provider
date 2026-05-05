@@ -31,6 +31,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Qwen3 Coder 480B A35B Instruct INT4 Mixed AR | `Intel/Qwen3-Coder-480B-A35B-Instruct-int4-mixed-ar` | 106K | 106K | ❌ | ❌ | ✅ | $0.22 | $0.95 |
 | Llama 3.3 70B Instruct | `meta-llama/Llama-3.3-70B-Instruct` | 128K | 128K | ❌ | ❌ | ✅ | $0.10 | $0.32 |
 | MiniMax M2.5 | `MiniMaxAI/MiniMax-M2.5` | 197K | 197K | ❌ | ❌ | ✅ | $0.20 | $1.20 |
+| MiniMax M2.7 | `MiniMaxAI/MiniMax-M2.7` | 205K | 205K | ❌ | ❌ | ✅ | $0.30 | $1.20 |
 | Mistral Nemo Instruct 2407 | `mistralai/Mistral-Nemo-Instruct-2407` | 128K | 128K | ❌ | ❌ | ✅ | $0.02 | $0.04 |
 | Kimi K2 Instruct 0905 | `moonshotai/Kimi-K2-Instruct-0905` | 262K | 262K | ❌ | ❌ | ✅ | $0.39 | $1.90 |
 | gpt-oss-120b | `openai/gpt-oss-120b` | 131K | 131K | ❌ | ❌ | ✅ | $0.10 | $0.40 |
