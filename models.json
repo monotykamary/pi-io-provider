@@ -56,9 +56,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.74,
-      "output": 3.49,
-      "cacheRead": 0.14,
+      "input": 0.8,
+      "output": 4,
+      "cacheRead": 0.25,
       "cacheWrite": 0
     },
     "contextWindow": 262142,
@@ -174,8 +174,8 @@
       "cacheRead": 0.08,
       "cacheWrite": 0
     },
-    "contextWindow": 262144,
-    "maxTokens": 262144
+    "contextWindow": 32768,
+    "maxTokens": 32768
   },
   {
     "id": "zai-org/GLM-4.7-Flash",
