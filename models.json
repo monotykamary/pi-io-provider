@@ -28,8 +28,8 @@
       "cacheRead": 0.38,
       "cacheWrite": 0
     },
-    "contextWindow": 65000,
-    "maxTokens": 65000
+    "contextWindow": 1048576,
+    "maxTokens": 1048576
   },
   {
     "id": "deepseek-ai/DeepSeek-V4-Pro",
@@ -44,8 +44,8 @@
       "cacheRead": 0.35,
       "cacheWrite": 0
     },
-    "contextWindow": 600000,
-    "maxTokens": 131072
+    "contextWindow": 1048576,
+    "maxTokens": 600000
   },
   {
     "id": "moonshotai/Kimi-K2.6",
@@ -56,8 +56,8 @@
       "image"
     ],
     "cost": {
-      "input": 0.8,
-      "output": 4,
+      "input": 0.74,
+      "output": 3.5,
       "cacheRead": 0.25,
       "cacheWrite": 0
     },
@@ -77,8 +77,8 @@
       "cacheRead": 0.26,
       "cacheWrite": 0
     },
-    "contextWindow": 202752,
-    "maxTokens": 131072
+    "contextWindow": 202750,
+    "maxTokens": 16384
   },
   {
     "id": "MiniMaxAI/MiniMax-M2.5",
