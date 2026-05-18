@@ -23,7 +23,6 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Mistral Large Instruct 2411 | `mistralai/Mistral-Large-Instruct-2411` | 128K | 128K | ✅ | ❌ | ✅ | $2.00 | $6.00 |
 | Kimi K2.5 | `moonshotai/Kimi-K2.5` | 262K | 262K | ✅ | ❌ | ✅ | $0.44 | $2.00 |
 | Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ❌ | ✅ | $0.74 | $3.50 |
-| Qwen2.5 VL 32B Instruct | `Qwen/Qwen2.5-VL-32B-Instruct` | 32K | 32K | ✅ | ❌ | ✅ | $0.05 | $0.22 |
 | DeepSeek V3.2 | `deepseek-ai/DeepSeek-V3.2` | 164K | 164K | ❌ | ❌ | ✅ | $0.25 | $0.38 |
 | DeepSeek V4 Flash | `deepseek-ai/DeepSeek-V4-Flash` | 1.0M | 1.0M | ❌ | ❌ | ✅ | $1.55 | $2.28 |
 | DeepSeek V4 Pro | `deepseek-ai/DeepSeek-V4-Pro` | 1.0M | 600K | ❌ | ❌ | ✅ | $4.45 | $5.50 |

@@ -259,23 +259,6 @@
     "maxTokens": 131072
   },
   {
-    "id": "Qwen/Qwen2.5-VL-32B-Instruct",
-    "name": "Qwen2.5 VL 32B Instruct",
-    "reasoning": false,
-    "input": [
-      "text",
-      "image"
-    ],
-    "cost": {
-      "input": 0.05,
-      "output": 0.22,
-      "cacheRead": 0.03,
-      "cacheWrite": 0.1
-    },
-    "contextWindow": 32000,
-    "maxTokens": 32000
-  },
-  {
     "id": "deepseek-ai/DeepSeek-R1-0528",
     "name": "DeepSeek R1 0528",
     "reasoning": true,
