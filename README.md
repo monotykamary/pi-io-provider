@@ -51,7 +51,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 Install directly from GitHub:
 
 ```bash
-pi install git:github.com/monotykamary/pi-io-provider
+pi install https://github.com/monotykamary/pi-io-provider
 ```
 
 Then set your API key and run pi:
