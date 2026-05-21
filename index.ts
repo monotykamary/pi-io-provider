@@ -164,10 +164,11 @@ function transformApiModel(apiModel: any): JsonModel | null {
   const hasVision = apiModel.supports_images_input === true;
   // IO returns per-token pricing, convert to per-million
   const toPerM = (v: any) => (typeof v === "number" ? v * 1_000_000 : 0);
-  return {
+  const hasReasoning = apiModel.capabilities?.reasoning === true || apiModel.supports_reasoning === true;
+  const model: JsonModel = {
     id: apiModel.id,
     name: apiModel.name || apiModel.id,
-    reasoning: false, // IO doesn't expose reasoning capability in API
+    reasoning: hasReasoning,
     input: hasVision ? ["text", "image"] : ["text"],
     cost: {
       input: toPerM(apiModel.input_token_price),
@@ -178,6 +179,12 @@ function transformApiModel(apiModel: any): JsonModel | null {
     contextWindow: apiModel.context_window || 131072,
     maxTokens: apiModel.max_tokens || 0,
   };
+  if (hasReasoning) {
+    model.compat = {
+      supportsReasoningEffort: true,
+    };
+  }
+  return model;
 }
 
 async function fetchLiveModels(apiKey: string, signal?: AbortSignal): Promise<JsonModel[] | null> {

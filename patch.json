@@ -1,1 +1,16 @@
-{}
+{
+  "moonshotai/Kimi-K2-Thinking": {
+    "reasoning": true,
+    "name": "Kimi K2 Thinking",
+    "compat": {
+      "supportsReasoningEffort": true
+    }
+  },
+  "deepseek-ai/DeepSeek-R1-0528": {
+    "reasoning": true,
+    "name": "DeepSeek R1 0528",
+    "compat": {
+      "supportsReasoningEffort": true
+    }
+  }
+}
