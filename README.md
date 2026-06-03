@@ -65,7 +65,7 @@ _DeepSeek, Kimi, GLM, Llama, Qwen, Mistral — with confidential TEE inference f
 Install directly from GitHub:
 
 ```bash
-pi install git:github.com/monotykamary/pi-io-provider
+pi install https://github.com/monotykamary/pi-io-provider
 ```
 
 Then set your API key and run pi:
