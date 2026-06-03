@@ -1,6 +1,17 @@
-# pi-io-provider
+<div align="center">
 
-A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence](https://io.net) as a custom model provider.
+# 🟣 pi-io-provider
+
+**23+ models through [IO Intelligence](https://io.net)**
+
+_DeepSeek, Kimi, GLM, Llama, Qwen, Mistral — with confidential TEE inference for [pi](https://github.com/earendil-works/pi-coding-agent)._
+
+[![pi extension](https://img.shields.io/badge/pi-extension-blueviolet)](https://github.com/earendil-works/pi-coding-agent)
+[![license](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+
+</div>
+
+---
 
 ## Features
 
