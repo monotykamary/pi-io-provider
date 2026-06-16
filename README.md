@@ -44,6 +44,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | GLM 4.7 Flash | `zai-org/GLM-4.7-Flash` | 200K | 200K | ❌ | ❌ | ✅ | $0.09 | $0.43 |
 | GLM 5 | `zai-org/GLM-5` | 203K | 203K | ❌ | ❌ | ✅ | $0.96 | $2.91 |
 | GLM 5.1 | `zai-org/GLM-5.1` | 203K | 33K | ❌ | ❌ | ✅ | $1.23 | $3.96 |
+| GLM 5.2 | `zai-org/GLM-5.2` | 1.0M | 1.0M | ❌ | ❌ | ✅ | $1.00 | $4.00 |
 
 *Costs are per million tokens. Cache read/write pricing available on most models.*
 

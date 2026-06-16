@@ -1,5 +1,21 @@
 [
   {
+    "id": "zai-org/GLM-5.2",
+    "name": "GLM 5.2",
+    "reasoning": false,
+    "input": [
+      "text"
+    ],
+    "cost": {
+      "input": 1,
+      "output": 4,
+      "cacheRead": 0.5,
+      "cacheWrite": 0
+    },
+    "contextWindow": 1048576,
+    "maxTokens": 1048576
+  },
+  {
     "id": "moonshotai/Kimi-K2.7-Code",
     "name": "Kimi K2.7 Code",
     "reasoning": false,
