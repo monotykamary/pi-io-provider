@@ -162,8 +162,9 @@ const LIVE_FETCH_TIMEOUT_MS = 8000;
 /** Transform a model from the IO Intelligence /v1/models API to JsonModel format. */
 function transformApiModel(apiModel: any): JsonModel | null {
   const hasVision = apiModel.supports_images_input === true;
-  // IO returns per-token pricing, convert to per-million
-  const toPerM = (v: any) => (typeof v === "number" ? v * 1_000_000 : 0);
+  // IO returns per-token pricing, convert to per-million. Round to 6 decimals to
+  // normalize float noise from the ×1e6 multiply and preserve sub-cent cache prices.
+  const toPerM = (v: any) => Math.round((typeof v === "number" ? v * 1_000_000 : 0) * 1e6) / 1e6;
   const hasReasoning = apiModel.capabilities?.reasoning === true || apiModel.supports_reasoning === true;
   const model: JsonModel = {
     id: apiModel.id,

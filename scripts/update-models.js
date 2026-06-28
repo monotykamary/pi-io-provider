@@ -75,10 +75,12 @@ function convertModel(apiModel, existingModelsMap) {
     const cacheWrite = (apiModel.cache_write_token_price || 0) * 1_000_000;
     if (ctx > 0) existing.contextWindow = ctx;
     if (maxTok > 0) existing.maxTokens = maxTok;
-    if (priceIn > 0) existing.cost.input = Math.round(priceIn * 100) / 100;
-    if (priceOut > 0) existing.cost.output = Math.round(priceOut * 100) / 100;
-    if (cacheRead > 0) existing.cost.cacheRead = Math.round(cacheRead * 100) / 100;
-    if (cacheWrite > 0) existing.cost.cacheWrite = Math.round(cacheWrite * 100) / 100;
+    // Round to 6 decimals of $/M: normalizes float noise from the ×1e6 multiply
+    // and preserves sub-cent cache prices like 0.003 (cent rounding erased them).
+    if (priceIn > 0) existing.cost.input = Math.round(priceIn * 1e6) / 1e6;
+    if (priceOut > 0) existing.cost.output = Math.round(priceOut * 1e6) / 1e6;
+    if (cacheRead > 0) existing.cost.cacheRead = Math.round(cacheRead * 1e6) / 1e6;
+    if (cacheWrite > 0) existing.cost.cacheWrite = Math.round(cacheWrite * 1e6) / 1e6;
     if (apiModel.supports_images_input && !existing.input.includes('image')) {
       existing.input = ['text', 'image'];
     }
@@ -102,10 +104,10 @@ function convertModel(apiModel, existingModelsMap) {
     reasoning: false,
     input,
     cost: {
-      input: Math.round(priceIn * 100) / 100,
-      output: Math.round(priceOut * 100) / 100,
-      cacheRead: Math.round(cacheRead * 100) / 100,
-      cacheWrite: Math.round(cacheWrite * 100) / 100,
+      input: Math.round(priceIn * 1e6) / 1e6,
+      output: Math.round(priceOut * 1e6) / 1e6,
+      cacheRead: Math.round(cacheRead * 1e6) / 1e6,
+      cacheWrite: Math.round(cacheWrite * 1e6) / 1e6,
     },
     contextWindow: ctx,
     maxTokens: maxTok,
