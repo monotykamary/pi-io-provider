@@ -20,31 +20,31 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Kimi K2 Thinking | `moonshotai/Kimi-K2-Thinking` | 262K | 262K | ❌ | ✅ | ✅ | $0.60 | $2.50 |
 | Llama 3.2 90B Vision Instruct | `meta-llama/Llama-3.2-90B-Vision-Instruct` | 16K | 16K | ✅ | ❌ | ✅ | $0.34 | $0.34 |
 | Llama 4 Maverick 17B 128E Instruct FP8 | `meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8` | 430K | 430K | ✅ | ❌ | ✅ | $0.27 | $0.89 |
-| Kimi K2.5 | `moonshotai/Kimi-K2.5` | 262K | 262K | ✅ | ❌ | ✅ | $0.48 | $2.54 |
-| Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ❌ | ✅ | $0.95 | $3.98 |
+| Kimi K2.5 | `moonshotai/Kimi-K2.5` | 262K | 262K | ✅ | ❌ | ✅ | $0.51 | $2.67 |
+| Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ❌ | ✅ | $1.00 | $4.10 |
 | DeepSeek V3.2 | `deepseek-ai/DeepSeek-V3.2` | 164K | 164K | ❌ | ❌ | ✅ | $0.94 | $1.84 |
 | DeepSeek V4 Flash | `deepseek-ai/DeepSeek-V4-Flash` | 1.0M | 1.0M | ❌ | ❌ | ✅ | $0.13 | $0.26 |
-| DeepSeek V4 Pro | `deepseek-ai/DeepSeek-V4-Pro` | 1.0M | 600K | ❌ | ❌ | ✅ | $1.67 | $3.34 |
-| Gemma 4 26B A4B | `google/gemma-4-26b-a4b-it` | 262K | 262K | ❌ | ❌ | ✅ | $0.12 | $0.43 |
+| DeepSeek V4 Pro | `deepseek-ai/DeepSeek-V4-Pro` | 1.0M | 600K | ❌ | ❌ | ✅ | $1.47 | $2.95 |
+| Gemma 4 26B A4B | `google/gemma-4-26b-a4b-it` | 262K | 262K | ❌ | ❌ | ✅ | $0.12 | $0.41 |
 | Qwen3 Coder 480B A35B Instruct INT4 Mixed AR | `Intel/Qwen3-Coder-480B-A35B-Instruct-int4-mixed-ar` | 106K | 106K | ❌ | ❌ | ✅ | $0.60 | $2.08 |
 | Llama 3.3 70B Instruct | `meta-llama/Llama-3.3-70B-Instruct` | 128K | 128K | ❌ | ❌ | ✅ | $0.61 | $1.04 |
-| MiniMax M2.5 | `MiniMaxAI/MiniMax-M2.5` | 197K | 197K | ❌ | ❌ | ✅ | $0.23 | $1.07 |
+| MiniMax M2.5 | `MiniMaxAI/MiniMax-M2.5` | 197K | 197K | ❌ | ❌ | ✅ | $0.27 | $1.09 |
 | MiniMax M2.7 | `MiniMaxAI/MiniMax-M2.7` | 205K | 205K | ❌ | ❌ | ✅ | $0.82 | $2.64 |
 | Mistral Nemo Instruct 2407 | `mistralai/Mistral-Nemo-Instruct-2407` | 128K | 128K | ❌ | ❌ | ✅ | $0.06 | $0.10 |
 | Kimi K2 Instruct 0905 | `moonshotai/Kimi-K2-Instruct-0905` | 262K | 262K | ❌ | ❌ | ✅ | $0.57 | $2.30 |
-| Kimi K2.7 Code | `moonshotai/Kimi-K2.7-Code` | 262K | 262K | ❌ | ❌ | ✅ | $1.13 | $4.80 |
-| gpt-oss-120b | `openai/gpt-oss-120b` | 131K | 131K | ❌ | ❌ | ✅ | $0.18 | $0.61 |
-| gpt-oss-20b | `openai/gpt-oss-20b` | 64K | 64K | ❌ | ❌ | ✅ | $0.04 | $0.18 |
+| Kimi K2.7 Code | `moonshotai/Kimi-K2.7-Code` | 262K | 262K | ❌ | ❌ | ✅ | $1.06 | $4.61 |
+| gpt-oss-120b | `openai/gpt-oss-120b` | 131K | 131K | ❌ | ❌ | ✅ | $0.18 | $0.68 |
+| gpt-oss-20b | `openai/gpt-oss-20b` | 64K | 64K | ❌ | ❌ | ✅ | $0.05 | $0.20 |
 | Qwen3 Next 80B A3B Instruct | `Qwen/Qwen3-Next-80B-A3B-Instruct` | 262K | 262K | ❌ | ❌ | ✅ | $0.12 | $1.14 |
-| Qwen3.6 27B | `Qwen/Qwen3.6-27B` | 262K | 262K | ❌ | ❌ | ✅ | $0.40 | $3.09 |
-| Qwen3.6 35B A3B | `Qwen/Qwen3.6-35B-A3B` | 262K | 262K | ❌ | ❌ | ✅ | $0.18 | $1.16 |
+| Qwen3.6 27B | `Qwen/Qwen3.6-27B` | 262K | 262K | ❌ | ❌ | ✅ | $0.34 | $2.71 |
+| Qwen3.6 35B A3B | `Qwen/Qwen3.6-35B-A3B` | 262K | 262K | ❌ | ❌ | ✅ | $0.17 | $1.18 |
 | GLM-4.5-Air | `zai-org/GLM-4.5-Air` | 131K | 131K | ❌ | ❌ | ✅ | $0.16 | $0.94 |
 | GLM 4.6 | `zai-org/GLM-4.6` | 131K | 131K | ❌ | ❌ | ✅ | $0.85 | $2.75 |
 | GLM 4.7 | `zai-org/GLM-4.7` | 203K | 203K | ❌ | ❌ | ✅ | $0.86 | $2.24 |
 | GLM 4.7 Flash | `zai-org/GLM-4.7-Flash` | 200K | 200K | ❌ | ❌ | ✅ | $0.08 | $0.42 |
-| GLM 5 | `zai-org/GLM-5` | 203K | 203K | ❌ | ❌ | ✅ | $0.77 | $2.39 |
+| GLM 5 | `zai-org/GLM-5` | 203K | 203K | ❌ | ❌ | ✅ | $0.84 | $2.59 |
 | GLM 5.1 | `zai-org/GLM-5.1` | 203K | 33K | ❌ | ❌ | ✅ | $1.38 | $4.38 |
-| GLM 5.2 | `zai-org/GLM-5.2` | 262K | 131K | ❌ | ❌ | ✅ | $1.54 | $4.84 |
+| GLM 5.2 | `zai-org/GLM-5.2` | 66K | 66K | ❌ | ❌ | ✅ | $1.86 | $6.01 |
 
 *Costs are per million tokens. Cache read/write pricing available on most models.*
 
