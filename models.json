@@ -93,7 +93,7 @@
       "cacheWrite": 0
     },
     "contextWindow": 1048576,
-    "maxTokens": 1048576
+    "maxTokens": 65536
   },
   {
     "id": "deepseek-ai/DeepSeek-V4-Pro",
