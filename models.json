@@ -7,9 +7,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.538,
-      "output": 4.84,
-      "cacheRead": 0.769,
+      "input": 1.678,
+      "output": 5.29,
+      "cacheRead": 0.839,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -23,9 +23,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.908,
-      "output": 3.9,
-      "cacheRead": 0.454,
+      "input": 0.948,
+      "output": 4,
+      "cacheRead": 0.474,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -55,9 +55,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.3708,
-      "output": 3.03,
-      "cacheRead": 0.1854,
+      "input": 0.403,
+      "output": 3.09,
+      "cacheRead": 0.2015,
       "cacheWrite": 0
     },
     "contextWindow": 32768,
@@ -71,9 +71,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.376,
-      "output": 1.6,
-      "cacheRead": 0.188,
+      "input": 0.3558,
+      "output": 1.38,
+      "cacheRead": 0.1779,
       "cacheWrite": 0
     },
     "contextWindow": 204800,
@@ -92,8 +92,8 @@
       "cacheRead": 0.10173,
       "cacheWrite": 0
     },
-    "contextWindow": 1048576,
-    "maxTokens": 65536
+    "contextWindow": 32768,
+    "maxTokens": 32768
   },
   {
     "id": "deepseek-ai/DeepSeek-V4-Pro",
@@ -103,9 +103,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.4142,
-      "output": 2.8284,
-      "cacheRead": 0.7071,
+      "input": 1.6572,
+      "output": 3.3146,
+      "cacheRead": 0.8286,
       "cacheWrite": 0
     },
     "contextWindow": 1048576,
@@ -120,9 +120,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.91,
-      "output": 3.88,
-      "cacheRead": 0.455,
+      "input": 0.95,
+      "output": 3.98,
+      "cacheRead": 0.475,
       "cacheWrite": 0
     },
     "contextWindow": 262142,
@@ -136,9 +136,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.31,
-      "output": 4.2,
-      "cacheRead": 0.655,
+      "input": 1.408,
+      "output": 4.468,
+      "cacheRead": 0.704,
       "cacheWrite": 0
     },
     "contextWindow": 202750,
@@ -152,9 +152,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.267,
-      "output": 1.042,
-      "cacheRead": 0.1335,
+      "input": 0.282,
+      "output": 1.102,
+      "cacheRead": 0.141,
       "cacheWrite": 0
     },
     "contextWindow": 196600,
@@ -249,9 +249,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.124,
-      "output": 0.41,
-      "cacheRead": 0.062,
+      "input": 0.116,
+      "output": 0.408,
+      "cacheRead": 0.058,
       "cacheWrite": 0
     },
     "contextWindow": 262142,
@@ -281,9 +281,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.93,
-      "output": 2.53,
-      "cacheRead": 0.465,
+      "input": 0.864,
+      "output": 2.24,
+      "cacheRead": 0.432,
       "cacheWrite": 0.6
     },
     "contextWindow": 202752,
@@ -330,9 +330,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.18,
-      "output": 0.61,
-      "cacheRead": 0.09,
+      "input": 0.188,
+      "output": 0.73,
+      "cacheRead": 0.094,
       "cacheWrite": 0.04
     },
     "contextWindow": 131072,
@@ -346,9 +346,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.523667,
-      "output": 2.205333,
-      "cacheRead": 0.261834,
+      "input": 0.56775,
+      "output": 2.279,
+      "cacheRead": 0.283875,
       "cacheWrite": 0.8
     },
     "contextWindow": 128000,
@@ -443,9 +443,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.051,
-      "output": 0.186,
-      "cacheRead": 0.0255,
+      "input": 0.059,
+      "output": 0.206,
+      "cacheRead": 0.0295,
       "cacheWrite": 0.03
     },
     "contextWindow": 64000,
