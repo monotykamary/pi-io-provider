@@ -1,6 +1,6 @@
 {
   "name": "pi-io-provider",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "IO Intelligence provider extension for pi - Access DeepSeek, Kimi, GLM, Llama, Qwen, Mistral, and more through the IO Intelligence API",
   "type": "module",
   "main": "index.ts",
