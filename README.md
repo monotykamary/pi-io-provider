@@ -38,6 +38,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Qwen3 Next 80B A3B Instruct | `Qwen/Qwen3-Next-80B-A3B-Instruct` | 262K | 262K | ❌ | ❌ | ✅ | $0.12 | $1.14 |
 | Qwen3.6 27B | `Qwen/Qwen3.6-27B` | 33K | 33K | ❌ | ❌ | ✅ | $0.40 | $3.03 |
 | Qwen3.6 35B A3B | `Qwen/Qwen3.6-35B-A3B` | 262K | 262K | ❌ | ❌ | ✅ | $0.18 | $1.07 |
+| MiMo-V2.5 | `XiaomiMiMo/MiMo-V2.5` | 262K | 262K | ❌ | ❌ | ✅ | $0.17 | $0.34 |
 | GLM-4.5-Air | `zai-org/GLM-4.5-Air` | 131K | 131K | ❌ | ❌ | ✅ | $0.16 | $0.94 |
 | GLM 4.6 | `zai-org/GLM-4.6` | 131K | 131K | ❌ | ❌ | ✅ | $0.54 | $2.07 |
 | GLM 4.7 | `zai-org/GLM-4.7` | 203K | 203K | ❌ | ❌ | ✅ | $0.95 | $2.55 |

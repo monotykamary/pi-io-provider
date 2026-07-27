@@ -1,5 +1,21 @@
 [
   {
+    "id": "XiaomiMiMo/MiMo-V2.5",
+    "name": "MiMo-V2.5",
+    "reasoning": false,
+    "input": [
+      "text"
+    ],
+    "cost": {
+      "input": 0.168,
+      "output": 0.336,
+      "cacheRead": 0.084,
+      "cacheWrite": 0
+    },
+    "contextWindow": 262144,
+    "maxTokens": 262144
+  },
+  {
     "id": "zai-org/GLM-5.2",
     "name": "GLM 5.2",
     "reasoning": false,
