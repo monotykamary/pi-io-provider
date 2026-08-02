@@ -1,24 +1,53 @@
 [
   {
-    "id": "moonshotai/Kimi-K3",
-    "name": "Kimi K3",
-    "reasoning": false,
+    "id": "deepseek-ai/DeepSeek-V4-Flash-0731",
+    "name": "DeepSeek V4 Flash 0731",
+    "reasoning": true,
     "input": [
       "text"
     ],
     "cost": {
-      "input": 3.58,
-      "output": 17.8,
-      "cacheRead": 1.79,
+      "input": 0.14,
+      "output": 0.28,
+      "cacheRead": 0.07,
+      "cacheWrite": 0
+    },
+    "contextWindow": 262100,
+    "maxTokens": 65536,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
+  },
+  {
+    "id": "moonshotai/Kimi-K3",
+    "name": "Kimi K3",
+    "reasoning": true,
+    "input": [
+      "text",
+      "image"
+    ],
+    "cost": {
+      "input": 3.6,
+      "output": 18,
+      "cacheRead": 1.8,
       "cacheWrite": 0
     },
     "contextWindow": 1048576,
-    "maxTokens": 1048576
+    "maxTokens": 1048576,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "XiaomiMiMo/MiMo-V2.5",
     "name": "MiMo-V2.5",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -29,12 +58,18 @@
       "cacheWrite": 0
     },
     "contextWindow": 262144,
-    "maxTokens": 262144
+    "maxTokens": 262144,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "zai-org/GLM-5.2",
     "name": "GLM 5.2",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -45,60 +80,87 @@
       "cacheWrite": 0
     },
     "contextWindow": 262144,
-    "maxTokens": 65536
+    "maxTokens": 65536,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "moonshotai/Kimi-K2.7-Code",
     "name": "Kimi K2.7 Code",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
-      "text"
+      "text",
+      "image"
     ],
     "cost": {
-      "input": 0.888,
-      "output": 3.85,
-      "cacheRead": 0.444,
+      "input": 1.072,
+      "output": 4.65,
+      "cacheRead": 0.536,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
-    "maxTokens": 262144
+    "maxTokens": 262144,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "Qwen/Qwen3.6-35B-A3B",
     "name": "Qwen3.6 35B A3B",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
-      "text"
+      "text",
+      "image"
     ],
     "cost": {
-      "input": 0.1872,
-      "output": 1.24675,
-      "cacheRead": 0.0936,
+      "input": 0.1672,
+      "output": 1.11675,
+      "cacheRead": 0.0836,
       "cacheWrite": 0
     },
     "contextWindow": 262140,
-    "maxTokens": 262140
+    "maxTokens": 262140,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "Qwen/Qwen3.6-27B",
     "name": "Qwen3.6 27B",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
-      "text"
+      "text",
+      "image"
     ],
     "cost": {
-      "input": 0.3668,
-      "output": 3.13,
-      "cacheRead": 0.1834,
+      "input": 0.373,
+      "output": 3.19,
+      "cacheRead": 0.1865,
       "cacheWrite": 0
     },
     "contextWindow": 32768,
-    "maxTokens": 32768
+    "maxTokens": 32768,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "MiniMaxAI/MiniMax-M2.7",
     "name": "MiniMax M2.7",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -108,13 +170,19 @@
       "cacheRead": 0.218,
       "cacheWrite": 0
     },
-    "contextWindow": 204800,
-    "maxTokens": 204800
+    "contextWindow": 262100,
+    "maxTokens": 65536,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "deepseek-ai/DeepSeek-V4-Flash",
     "name": "DeepSeek V4 Flash",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -125,28 +193,40 @@
       "cacheWrite": 0
     },
     "contextWindow": 32768,
-    "maxTokens": 32768
+    "maxTokens": 32768,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "deepseek-ai/DeepSeek-V4-Pro",
     "name": "DeepSeek V4 Pro",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
     "cost": {
-      "input": 1.652,
-      "output": 3.304,
-      "cacheRead": 0.826,
+      "input": 1.52044,
+      "output": 3.04088,
+      "cacheRead": 0.76022,
       "cacheWrite": 0
     },
     "contextWindow": 1048576,
-    "maxTokens": 600000
+    "maxTokens": 600000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "moonshotai/Kimi-K2.6",
     "name": "Kimi K2.6",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text",
       "image"
@@ -158,77 +238,107 @@
       "cacheWrite": 0
     },
     "contextWindow": 262142,
-    "maxTokens": 262142
+    "maxTokens": 262142,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "zai-org/GLM-5.1",
     "name": "GLM 5.1",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
     "cost": {
-      "input": 1.275,
-      "output": 4.38,
-      "cacheRead": 0.6375,
+      "input": 1.2732,
+      "output": 4.1272,
+      "cacheRead": 0.6366,
       "cacheWrite": 0
     },
     "contextWindow": 202750,
-    "maxTokens": 32768
+    "maxTokens": 32768,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "MiniMaxAI/MiniMax-M2.5",
     "name": "MiniMax M2.5",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
     "cost": {
-      "input": 0.282,
-      "output": 1.128,
-      "cacheRead": 0.141,
+      "input": 0.287,
+      "output": 1.152,
+      "cacheRead": 0.1435,
       "cacheWrite": 0
     },
     "contextWindow": 196600,
-    "maxTokens": 196600
+    "maxTokens": 196600,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "moonshotai/Kimi-K2.5",
     "name": "Kimi K2.5",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text",
       "image"
     ],
     "cost": {
-      "input": 0.55,
-      "output": 2.89,
-      "cacheRead": 0.275,
+      "input": 0.564,
+      "output": 2.82,
+      "cacheRead": 0.282,
       "cacheWrite": 1.1
     },
     "contextWindow": 262144,
-    "maxTokens": 262144
+    "maxTokens": 262144,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "zai-org/GLM-5",
     "name": "GLM 5",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
     "cost": {
-      "input": 0.83,
-      "output": 2.59,
-      "cacheRead": 0.415,
+      "input": 0.85,
+      "output": 2.622,
+      "cacheRead": 0.425,
       "cacheWrite": 0
     },
     "contextWindow": 202752,
-    "maxTokens": 202752
+    "maxTokens": 202752,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "deepseek-ai/DeepSeek-V3.2",
     "name": "DeepSeek V3.2",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -239,7 +349,13 @@
       "cacheWrite": 0.5
     },
     "contextWindow": 163840,
-    "maxTokens": 163840
+    "maxTokens": 163840,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "moonshotai/Kimi-K2-Thinking",
@@ -255,12 +371,18 @@
       "cacheWrite": 0.64
     },
     "contextWindow": 262144,
-    "maxTokens": 262144
+    "maxTokens": 262144,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "zai-org/GLM-4.5-Air",
     "name": "GLM-4.5-Air",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -271,28 +393,40 @@
       "cacheWrite": 0
     },
     "contextWindow": 131070,
-    "maxTokens": 131070
+    "maxTokens": 131070,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "google/gemma-4-26b-a4b-it",
     "name": "Gemma 4 26B A4B",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
     "cost": {
-      "input": 0.12,
-      "output": 0.418,
-      "cacheRead": 0.06,
+      "input": 0.13,
+      "output": 0.43,
+      "cacheRead": 0.065,
       "cacheWrite": 0
     },
     "contextWindow": 262142,
-    "maxTokens": 262142
+    "maxTokens": 262142,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "zai-org/GLM-4.7-Flash",
     "name": "GLM 4.7 Flash",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -303,12 +437,18 @@
       "cacheWrite": 0.14
     },
     "contextWindow": 200000,
-    "maxTokens": 200000
+    "maxTokens": 200000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "zai-org/GLM-4.7",
     "name": "GLM 4.7",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -319,7 +459,13 @@
       "cacheWrite": 0.6
     },
     "contextWindow": 202752,
-    "maxTokens": 202752
+    "maxTokens": 202752,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "moonshotai/Kimi-K2-Instruct-0905",
@@ -335,7 +481,12 @@
       "cacheWrite": 0.78
     },
     "contextWindow": 262144,
-    "maxTokens": 262144
+    "maxTokens": 262144,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens"
+    }
   },
   {
     "id": "meta-llama/Llama-3.2-90B-Vision-Instruct",
@@ -352,12 +503,17 @@
       "cacheWrite": 0.7
     },
     "contextWindow": 16000,
-    "maxTokens": 16000
+    "maxTokens": 16000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens"
+    }
   },
   {
     "id": "openai/gpt-oss-120b",
     "name": "gpt-oss-120b",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -368,7 +524,13 @@
       "cacheWrite": 0.04
     },
     "contextWindow": 131072,
-    "maxTokens": 131072
+    "maxTokens": 131072,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "deepseek-ai/DeepSeek-R1-0528",
@@ -384,12 +546,18 @@
       "cacheWrite": 0.8
     },
     "contextWindow": 128000,
-    "maxTokens": 128000
+    "maxTokens": 128000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "zai-org/GLM-4.6",
     "name": "GLM 4.6",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
@@ -400,7 +568,13 @@
       "cacheWrite": 0.7
     },
     "contextWindow": 131072,
-    "maxTokens": 131072
+    "maxTokens": 131072,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "Qwen/Qwen3-Next-80B-A3B-Instruct",
@@ -416,7 +590,12 @@
       "cacheWrite": 0.12
     },
     "contextWindow": 262144,
-    "maxTokens": 262144
+    "maxTokens": 262144,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens"
+    }
   },
   {
     "id": "Intel/Qwen3-Coder-480B-A35B-Instruct-int4-mixed-ar",
@@ -432,7 +611,12 @@
       "cacheWrite": 0.44
     },
     "contextWindow": 106000,
-    "maxTokens": 106000
+    "maxTokens": 106000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens"
+    }
   },
   {
     "id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
@@ -449,7 +633,12 @@
       "cacheWrite": 0.3
     },
     "contextWindow": 430000,
-    "maxTokens": 430000
+    "maxTokens": 430000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens"
+    }
   },
   {
     "id": "mistralai/Mistral-Nemo-Instruct-2407",
@@ -465,23 +654,34 @@
       "cacheWrite": 0.04
     },
     "contextWindow": 128000,
-    "maxTokens": 128000
+    "maxTokens": 128000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens"
+    }
   },
   {
     "id": "openai/gpt-oss-20b",
     "name": "gpt-oss-20b",
-    "reasoning": false,
+    "reasoning": true,
     "input": [
       "text"
     ],
     "cost": {
-      "input": 0.063,
-      "output": 0.226,
-      "cacheRead": 0.0315,
+      "input": 0.053,
+      "output": 0.216,
+      "cacheRead": 0.0265,
       "cacheWrite": 0.03
     },
     "contextWindow": 64000,
-    "maxTokens": 64000
+    "maxTokens": 64000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
   },
   {
     "id": "meta-llama/Llama-3.3-70B-Instruct",
@@ -497,6 +697,11 @@
       "cacheWrite": 0.2
     },
     "contextWindow": 128000,
-    "maxTokens": 128000
+    "maxTokens": 128000,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens"
+    }
   }
 ]

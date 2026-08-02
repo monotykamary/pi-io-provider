@@ -59,12 +59,14 @@ interface JsonModel {
   };
   contextWindow: number;
   maxTokens: number;
+  thinkingLevelMap?: Record<string, string | null>;
   compat?: {
     supportsDeveloperRole?: boolean;
     supportsStore?: boolean;
     maxTokensField?: "max_completion_tokens" | "max_tokens";
     thinkingFormat?: "openai" | "zai" | "qwen" | "qwen-chat-template";
     supportsReasoningEffort?: boolean;
+    requiresReasoningContentOnAssistantMessages?: boolean;
   };
 }
 
@@ -80,6 +82,7 @@ interface PatchEntry {
   };
   contextWindow?: number;
   maxTokens?: number;
+  thinkingLevelMap?: Record<string, string | null>;
   compat?: Record<string, unknown>;
 }
 
@@ -95,6 +98,7 @@ function applyPatch(model: JsonModel, patch: PatchEntry): JsonModel {
   if (patch.input !== undefined) result.input = patch.input;
   if (patch.contextWindow !== undefined) result.contextWindow = patch.contextWindow;
   if (patch.maxTokens !== undefined) result.maxTokens = patch.maxTokens;
+  if (patch.thinkingLevelMap !== undefined) result.thinkingLevelMap = { ...patch.thinkingLevelMap };
 
   if (patch.cost) {
     result.cost = {
@@ -110,6 +114,9 @@ function applyPatch(model: JsonModel, patch: PatchEntry): JsonModel {
 
   if (!result.reasoning && result.compat?.thinkingFormat) {
     delete result.compat.thinkingFormat;
+  }
+  if (!result.reasoning && result.thinkingLevelMap) {
+    delete result.thinkingLevelMap;
   }
   if (result.compat && Object.keys(result.compat).length === 0) {
     delete result.compat;
@@ -164,7 +171,7 @@ const LIVE_FETCH_TIMEOUT_MS = 8000;
 
 /** Transform a model from the IO Intelligence /v1/models API to JsonModel format. */
 function transformApiModel(apiModel: any): JsonModel | null {
-  const hasVision = apiModel.supports_images_input === true;
+  const hasVision = apiModel.supports_images_input === true || (apiModel.input_modalities || []).includes("image");
   // IO returns per-token pricing, convert to per-million. Round to 6 decimals to
   // normalize float noise from the ×1e6 multiply and preserve sub-cent cache prices.
   const toPerM = (v: any) => Math.round((typeof v === "number" ? v * 1_000_000 : 0) * 1e6) / 1e6;
@@ -181,13 +188,14 @@ function transformApiModel(apiModel: any): JsonModel | null {
       cacheWrite: toPerM(apiModel.cache_write_token_price),
     },
     contextWindow: apiModel.context_window || 131072,
-    maxTokens: apiModel.max_tokens || 0,
+    maxTokens: apiModel.max_tokens || apiModel.context_window || 131072,
+    compat: {
+      supportsStore: false,
+      supportsDeveloperRole: false,
+      maxTokensField: "max_tokens",
+      ...(hasReasoning ? { supportsReasoningEffort: true } : {}),
+    },
   };
-  if (hasReasoning) {
-    model.compat = {
-      supportsReasoningEffort: true,
-    };
-  }
   return model;
 }
 

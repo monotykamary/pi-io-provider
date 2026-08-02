@@ -81,9 +81,17 @@ function convertModel(apiModel, existingModelsMap) {
     if (priceOut > 0) existing.cost.output = Math.round(priceOut * 1e6) / 1e6;
     if (cacheRead > 0) existing.cost.cacheRead = Math.round(cacheRead * 1e6) / 1e6;
     if (cacheWrite > 0) existing.cost.cacheWrite = Math.round(cacheWrite * 1e6) / 1e6;
-    if (apiModel.supports_images_input && !existing.input.includes('image')) {
-      existing.input = ['text', 'image'];
-    }
+    const hasVision = apiModel.supports_images_input === true || (apiModel.input_modalities || []).includes('image');
+    const hasReasoning = apiModel.capabilities?.reasoning === true || apiModel.supports_reasoning === true;
+    existing.input = hasVision ? ['text', 'image'] : ['text'];
+    existing.reasoning = hasReasoning;
+    existing.compat = {
+      ...(existing.compat || {}),
+      supportsStore: false,
+      supportsDeveloperRole: false,
+      maxTokensField: 'max_tokens',
+      ...(hasReasoning ? { supportsReasoningEffort: true } : {}),
+    };
     return existing;
   }
 
@@ -91,7 +99,7 @@ function convertModel(apiModel, existingModelsMap) {
   const ctx = apiModel.context_window || 0;
   const maxTok = apiModel.max_tokens || ctx;
   const input = ['text'];
-  if (apiModel.supports_images_input) input.push('image');
+  if (apiModel.supports_images_input === true || (apiModel.input_modalities || []).includes('image')) input.push('image');
 
   const priceIn = (apiModel.input_token_price || 0) * 1_000_000;
   const priceOut = (apiModel.output_token_price || 0) * 1_000_000;
@@ -101,7 +109,7 @@ function convertModel(apiModel, existingModelsMap) {
   return {
     id,
     name: cleanName(apiModel.name, id),
-    reasoning: false,
+    reasoning: apiModel.capabilities?.reasoning === true || apiModel.supports_reasoning === true,
     input,
     cost: {
       input: Math.round(priceIn * 1e6) / 1e6,
@@ -111,6 +119,14 @@ function convertModel(apiModel, existingModelsMap) {
     },
     contextWindow: ctx,
     maxTokens: maxTok,
+    compat: {
+      supportsStore: false,
+      supportsDeveloperRole: false,
+      maxTokensField: 'max_tokens',
+      ...((apiModel.capabilities?.reasoning === true || apiModel.supports_reasoning === true)
+        ? { supportsReasoningEffort: true }
+        : {}),
+    },
   };
 }
 
@@ -123,6 +139,7 @@ function applyPatch(model, patch) {
   if (patch.input !== undefined) result.input = patch.input;
   if (patch.contextWindow !== undefined) result.contextWindow = patch.contextWindow;
   if (patch.maxTokens !== undefined) result.maxTokens = patch.maxTokens;
+  if (patch.thinkingLevelMap !== undefined) result.thinkingLevelMap = { ...patch.thinkingLevelMap };
   if (patch.cost) {
     result.cost = {
       input: patch.cost.input ?? result.cost.input,
@@ -136,6 +153,9 @@ function applyPatch(model, patch) {
   }
   if (!result.reasoning && result.compat?.thinkingFormat) {
     delete result.compat.thinkingFormat;
+  }
+  if (!result.reasoning && result.thinkingLevelMap) {
+    delete result.thinkingLevelMap;
   }
   if (result.compat && Object.keys(result.compat).length === 0) {
     delete result.compat;
