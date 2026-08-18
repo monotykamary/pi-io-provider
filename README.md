@@ -22,7 +22,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Kimi K3 | `moonshotai/Kimi-K3` | 1.0M | 1.0M | ✅ | ✅ | ✅ | $2.93 | $14.65 |
 | Qwen3.6 27B | `Qwen/Qwen3.6-27B` | 33K | 33K | ✅ | ✅ | ✅ | $0.40 | $3.03 |
 | Qwen3.6 35B A3B | `Qwen/Qwen3.6-35B-A3B` | 262K | 262K | ✅ | ✅ | ✅ | $0.17 | $1.12 |
-| Qwen3.8 27B | `Qwen/Qwen3.8-27B` | 262K | 66K | ✅ | ✅ | ✅ | $0.45 | $3.25 |
+| Qwen3.8 27B | `Qwen/Qwen3.8-27B` | 66K | 66K | ✅ | ✅ | ✅ | $0.45 | $3.25 |
 | DeepSeek R1 0528 | `deepseek-ai/DeepSeek-R1-0528` | 128K | 128K | ❌ | ✅ | ✅ | $0.57 | $2.28 |
 | DeepSeek V3.2 | `deepseek-ai/DeepSeek-V3.2` | 164K | 164K | ❌ | ✅ | ✅ | $0.81 | $1.33 |
 | DeepSeek V4 Flash | `deepseek-ai/DeepSeek-V4-Flash` | 33K | 33K | ❌ | ✅ | ✅ | $0.15 | $0.35 |
