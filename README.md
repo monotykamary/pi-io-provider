@@ -35,7 +35,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Kimi K2 Thinking | `moonshotai/Kimi-K2-Thinking` | 262K | 262K | ❌ | ✅ | ✅ | $0.60 | $2.50 |
 | gpt-oss-120b | `openai/gpt-oss-120b` | 131K | 131K | ❌ | ✅ | ✅ | $0.18 | $0.68 |
 | gpt-oss-20b | `openai/gpt-oss-20b` | 64K | 64K | ❌ | ✅ | ✅ | $0.07 | $0.24 |
-| MiMo-V2.5 | `XiaomiMiMo/MiMo-V2.5` | 262K | 262K | ❌ | ✅ | ✅ | $0.19 | $0.63 |
+| MiMo-V2.5 | `XiaomiMiMo/MiMo-V2.5` | 1.0M | 1.0M | ❌ | ✅ | ✅ | $0.19 | $0.63 |
 | GLM-4.5-Air | `zai-org/GLM-4.5-Air` | 131K | 131K | ❌ | ✅ | ✅ | $0.16 | $0.94 |
 | GLM 4.6 | `zai-org/GLM-4.6` | 131K | 131K | ❌ | ✅ | ✅ | $0.54 | $2.07 |
 | GLM 4.7 | `zai-org/GLM-4.7` | 203K | 203K | ❌ | ✅ | ✅ | $0.88 | $2.37 |
@@ -43,7 +43,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | GLM 5 | `zai-org/GLM-5` | 203K | 203K | ❌ | ✅ | ✅ | $0.90 | $2.80 |
 | GLM 5.1 | `zai-org/GLM-5.1` | 203K | 33K | ❌ | ✅ | ✅ | $1.31 | $4.27 |
 | GLM 5.2 | `zai-org/GLM-5.2` | 262K | 131K | ❌ | ✅ | ✅ | $1.55 | $4.88 |
-| GLM 5.3 | `zai-org/GLM-5.3` | 1.0M | 131K | ❌ | ✅ | ✅ | $1.40 | $4.40 |
+| GLM 5.3 | `zai-org/GLM-5.3` | 262K | 131K | ❌ | ✅ | ✅ | $1.40 | $4.40 |
 | Llama 4 Maverick 17B 128E Instruct FP8 | `meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8` | 430K | 430K | ✅ | ❌ | ✅ | $0.28 | $0.93 |
 | Qwen3 Coder 480B A35B Instruct INT4 Mixed AR | `Intel/Qwen3-Coder-480B-A35B-Instruct-int4-mixed-ar` | 106K | 106K | ❌ | ❌ | ✅ | $0.45 | $2.15 |
 | Llama 3.3 70B Instruct | `meta-llama/Llama-3.3-70B-Instruct` | 128K | 128K | ❌ | ❌ | ✅ | $0.61 | $1.04 |
