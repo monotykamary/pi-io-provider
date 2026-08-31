@@ -58,7 +58,7 @@
       "cacheRead": 0.2,
       "cacheWrite": 0
     },
-    "contextWindow": 65500,
+    "contextWindow": 65536,
     "maxTokens": 65536,
     "compat": {
       "supportsStore": false,
