@@ -16,33 +16,33 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 
 | Model | ID | Context | Max Output | Vision | Reasoning | Cache | Input $/M | Output $/M |
 |-------|----|---------|------------|--------|-----------|-------|-----------|------------|
-| Kimi K2.5 | `moonshotai/Kimi-K2.5` | 262K | 262K | ✅ | ✅ | ✅ | $0.54 | $2.85 |
-| Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ✅ | ✅ | $0.68 | $3.31 |
+| Kimi K2.5 | `moonshotai/Kimi-K2.5` | 262K | 262K | ✅ | ✅ | ✅ | $0.55 | $2.88 |
+| Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ✅ | ✅ | $0.73 | $3.33 |
 | Kimi K2.7 Code | `moonshotai/Kimi-K2.7-Code` | 262K | 262K | ✅ | ✅ | ✅ | $1.03 | $4.53 |
-| Kimi K3 | `moonshotai/Kimi-K3` | 1.0M | 1.0M | ✅ | ✅ | ✅ | $3.30 | $16.50 |
-| Qwen3.6 27B | `Qwen/Qwen3.6-27B` | 33K | 33K | ✅ | ✅ | ✅ | $0.40 | $3.19 |
+| Kimi K3 | `moonshotai/Kimi-K3` | 1.0M | 1.0M | ✅ | ✅ | ✅ | $3.36 | $16.80 |
+| Qwen3.6 27B | `Qwen/Qwen3.6-27B` | 33K | 33K | ✅ | ✅ | ✅ | $0.40 | $2.95 |
 | Qwen3.6 35B A3B | `Qwen/Qwen3.6-35B-A3B` | 262K | 262K | ✅ | ✅ | ✅ | $0.19 | $1.23 |
-| Qwen3.8 27B | `Qwen/Qwen3.8-27B` | 66K | 66K | ✅ | ✅ | ✅ | $0.45 | $3.25 |
-| GLM 5.3 Flash | `zai-org/GLM-5.3-Flash` | 262K | 131K | ✅ | ✅ | ✅ | $0.13 | $0.44 |
-| DeepSeek R1 0528 | `deepseek-ai/DeepSeek-R1-0528` | 128K | 128K | ❌ | ✅ | ✅ | $0.57 | $2.28 |
-| DeepSeek V3.2 | `deepseek-ai/DeepSeek-V3.2` | 164K | 164K | ❌ | ✅ | ✅ | $0.82 | $1.35 |
-| DeepSeek V4 Flash | `deepseek-ai/DeepSeek-V4-Flash` | 33K | 33K | ❌ | ✅ | ✅ | $0.21 | $0.54 |
+| Qwen3.8 27B | `Qwen/Qwen3.8-27B` | 66K | 66K | ✅ | ✅ | ✅ | $0.39 | $2.99 |
+| GLM 5.3 Flash | `zai-org/GLM-5.3-Flash` | 262K | 131K | ✅ | ✅ | ✅ | $0.15 | $0.49 |
+| DeepSeek R1 0528 | `deepseek-ai/DeepSeek-R1-0528` | 128K | 128K | ❌ | ✅ | ✅ | $0.52 | $2.21 |
+| DeepSeek V3.2 | `deepseek-ai/DeepSeek-V3.2` | 164K | 164K | ❌ | ✅ | ✅ | $1.43 | $2.41 |
+| DeepSeek V4 Flash | `deepseek-ai/DeepSeek-V4-Flash` | 33K | 33K | ❌ | ✅ | ✅ | $0.20 | $0.49 |
 | DeepSeek V4 Flash 0731 | `deepseek-ai/DeepSeek-V4-Flash-0731` | 262K | 66K | ❌ | ✅ | ✅ | $0.21 | $0.56 |
-| DeepSeek V4 Pro | `deepseek-ai/DeepSeek-V4-Pro` | 1.0M | 600K | ❌ | ✅ | ✅ | $1.62 | $3.30 |
+| DeepSeek V4 Pro | `deepseek-ai/DeepSeek-V4-Pro` | 1.0M | 600K | ❌ | ✅ | ✅ | $1.57 | $3.20 |
 | Gemma 4 26B A4B | `google/gemma-4-26b-a4b-it` | 262K | 262K | ❌ | ✅ | ✅ | $0.12 | $0.42 |
-| MiniMax M2.5 | `MiniMaxAI/MiniMax-M2.5` | 197K | 197K | ❌ | ✅ | ✅ | $0.35 | $1.42 |
-| MiniMax M2.7 | `MiniMaxAI/MiniMax-M2.7` | 262K | 66K | ❌ | ✅ | ✅ | $0.42 | $1.61 |
+| MiniMax M2.5 | `MiniMaxAI/MiniMax-M2.5` | 197K | 197K | ❌ | ✅ | ✅ | $0.29 | $1.18 |
+| MiniMax M2.7 | `MiniMaxAI/MiniMax-M2.7` | 262K | 66K | ❌ | ✅ | ✅ | $0.40 | $1.50 |
 | Kimi K2 Thinking | `moonshotai/Kimi-K2-Thinking` | 262K | 262K | ❌ | ✅ | ✅ | $0.60 | $2.50 |
-| gpt-oss-120b | `openai/gpt-oss-120b` | 131K | 131K | ❌ | ✅ | ✅ | $0.19 | $0.70 |
+| gpt-oss-120b | `openai/gpt-oss-120b` | 131K | 131K | ❌ | ✅ | ✅ | $0.19 | $0.63 |
 | gpt-oss-20b | `openai/gpt-oss-20b` | 64K | 64K | ❌ | ✅ | ✅ | $0.07 | $0.24 |
 | MiMo-V2.5 | `XiaomiMiMo/MiMo-V2.5` | 1.0M | 1.0M | ❌ | ✅ | ✅ | $0.19 | $0.63 |
 | GLM-4.5-Air | `zai-org/GLM-4.5-Air` | 131K | 131K | ❌ | ✅ | ✅ | $0.17 | $0.97 |
-| GLM 4.6 | `zai-org/GLM-4.6` | 131K | 131K | ❌ | ✅ | ✅ | $0.55 | $2.09 |
+| GLM 4.6 | `zai-org/GLM-4.6` | 131K | 131K | ❌ | ✅ | ✅ | $0.54 | $2.07 |
 | GLM 4.7 | `zai-org/GLM-4.7` | 203K | 203K | ❌ | ✅ | ✅ | $0.88 | $2.37 |
 | GLM 4.7 Flash | `zai-org/GLM-4.7-Flash` | 200K | 200K | ❌ | ✅ | ✅ | $0.06 | $0.40 |
 | GLM 5 | `zai-org/GLM-5` | 203K | 203K | ❌ | ✅ | ✅ | $0.91 | $2.93 |
 | GLM 5.1 | `zai-org/GLM-5.1` | 203K | 33K | ❌ | ✅ | ✅ | $1.33 | $4.31 |
-| GLM 5.2 | `zai-org/GLM-5.2` | 262K | 131K | ❌ | ✅ | ✅ | $1.42 | $4.48 |
+| GLM 5.2 | `zai-org/GLM-5.2` | 262K | 131K | ❌ | ✅ | ✅ | $1.72 | $5.41 |
 | GLM 5.3 | `zai-org/GLM-5.3` | 262K | 131K | ❌ | ✅ | ✅ | $1.40 | $4.40 |
 | Llama 4 Maverick 17B 128E Instruct FP8 | `meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8` | 430K | 430K | ✅ | ❌ | ✅ | $0.27 | $0.90 |
 | Qwen3 Coder 480B A35B Instruct INT4 Mixed AR | `Intel/Qwen3-Coder-480B-A35B-Instruct-int4-mixed-ar` | 106K | 106K | ❌ | ❌ | ✅ | $0.45 | $2.15 |
