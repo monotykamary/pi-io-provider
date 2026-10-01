@@ -2,6 +2,11 @@
 
 A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence](https://io.net) as a custom model provider.
 
+## Pi 1.0 compatibility
+
+Tested with Pi **1.0.0**. Host-provided packages remain wildcard peers; development uses exact SDK pins.
+Run `bun run test:pi` for offline manifest, catalog, lifecycle and streaming checks. To test an installed host, set `PI1_HOST_PACKAGE` to its package directory; add `PI1_HOST_ENTRY=bundle` for its bundled CLI runtime. The probe stubs all network requests and never uses a live provider endpoint.
+
 ## Features
 
 - **OpenAI-compatible API** — Uses IO Intelligence's `/api/v1/chat/completions` endpoint
