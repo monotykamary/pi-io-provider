@@ -8,9 +8,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.1556,
-      "output": 0.2632,
-      "cacheRead": 0.0778,
+      "input": 0.1256,
+      "output": 0.2592,
+      "cacheRead": 0.0628,
       "cacheWrite": 0
     },
     "contextWindow": 1048320,
@@ -31,9 +31,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.36,
-      "output": 1.44,
-      "cacheRead": 0.18,
+      "input": 0.33,
+      "output": 1.32,
+      "cacheRead": 0.165,
       "cacheWrite": 0
     },
     "contextWindow": 1048320,
@@ -76,9 +76,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.596,
+      "input": 1.848,
       "output": 5.808,
-      "cacheRead": 0.798,
+      "cacheRead": 0.924,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -99,9 +99,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.376,
-      "output": 2.398,
-      "cacheRead": 0.188,
+      "input": 0.416,
+      "output": 2.498,
+      "cacheRead": 0.208,
       "cacheWrite": 0
     },
     "contextWindow": 65536,
@@ -144,9 +144,9 @@
       "image"
     ],
     "cost": {
-      "input": 3.598,
-      "output": 18,
-      "cacheRead": 1.799,
+      "input": 3.268,
+      "output": 17.0038,
+      "cacheRead": 1.634,
       "cacheWrite": 0
     },
     "contextWindow": 1048576,
@@ -166,9 +166,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.199,
-      "output": 0.638,
-      "cacheRead": 0.0995,
+      "input": 0.20675,
+      "output": 0.7135,
+      "cacheRead": 0.103375,
       "cacheWrite": 0
     },
     "contextWindow": 1048576,
@@ -188,9 +188,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.604,
-      "output": 5.364,
-      "cacheRead": 0.802,
+      "input": 1.484,
+      "output": 5.604,
+      "cacheRead": 0.742,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -234,9 +234,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.17,
-      "output": 1.1,
-      "cacheRead": 0.085,
+      "input": 0.16,
+      "output": 1.07,
+      "cacheRead": 0.08,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -257,9 +257,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.339,
-      "output": 3.07,
-      "cacheRead": 0.1695,
+      "input": 0.343,
+      "output": 3.08,
+      "cacheRead": 0.1715,
       "cacheWrite": 0
     },
     "contextWindow": 32768,
@@ -279,9 +279,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.402,
-      "output": 1.488,
-      "cacheRead": 0.201,
+      "input": 0.414,
+      "output": 1.536,
+      "cacheRead": 0.207,
       "cacheWrite": 0
     },
     "contextWindow": 262100,
@@ -346,9 +346,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.8,
-      "output": 3.682,
-      "cacheRead": 0.4,
+      "input": 0.7882,
+      "output": 3.722,
+      "cacheRead": 0.3941,
       "cacheWrite": 0
     },
     "contextWindow": 262142,
@@ -368,9 +368,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.40028,
-      "output": 4.40088,
-      "cacheRead": 0.70014,
+      "input": 1.358,
+      "output": 4.268,
+      "cacheRead": 0.679,
       "cacheWrite": 0
     },
     "contextWindow": 202750,
@@ -390,9 +390,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.354,
+      "input": 0.353,
       "output": 1.416,
-      "cacheRead": 0.177,
+      "cacheRead": 0.1765,
       "cacheWrite": 0
     },
     "contextWindow": 196600,
@@ -457,9 +457,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.35376,
-      "output": 2.12992,
-      "cacheRead": 0.67688,
+      "input": 1.41376,
+      "output": 2.38992,
+      "cacheRead": 0.70688,
       "cacheWrite": 0.5
     },
     "contextWindow": 163840,
@@ -524,9 +524,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.092,
-      "output": 0.31,
-      "cacheRead": 0.046,
+      "input": 0.104,
+      "output": 0.354,
+      "cacheRead": 0.052,
       "cacheWrite": 0
     },
     "contextWindow": 262142,
@@ -612,7 +612,7 @@
     ],
     "cost": {
       "input": 0.188,
-      "output": 0.73,
+      "output": 0.7,
       "cacheRead": 0.094,
       "cacheWrite": 0.04
     },
@@ -655,9 +655,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.496,
-      "output": 1.95,
-      "cacheRead": 0.248,
+      "input": 0.52,
+      "output": 2.0375,
+      "cacheRead": 0.26,
       "cacheWrite": 0.7
     },
     "contextWindow": 131072,
@@ -795,6 +795,29 @@
       "supportsStore": false,
       "supportsDeveloperRole": false,
       "maxTokensField": "max_tokens"
+    }
+  },
+  {
+    "id": "nvidia/nemotron-3.5-super-vl",
+    "name": "Nemotron 3.5 Super VL",
+    "reasoning": true,
+    "input": [
+      "text",
+      "image"
+    ],
+    "cost": {
+      "input": 0.18,
+      "output": 0.65,
+      "cacheRead": 0.09,
+      "cacheWrite": 0
+    },
+    "contextWindow": 262144,
+    "maxTokens": 131072,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
     }
   },
   {
