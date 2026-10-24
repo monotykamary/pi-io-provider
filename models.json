@@ -1,5 +1,27 @@
 [
   {
+    "id": "reflection/Beam-1.0-501B-A23B",
+    "name": "Beam 1.0",
+    "reasoning": true,
+    "input": [
+      "text"
+    ],
+    "cost": {
+      "input": 0.35,
+      "output": 1.12,
+      "cacheRead": 0.175,
+      "cacheWrite": 0
+    },
+    "contextWindow": 1048576,
+    "maxTokens": 131072,
+    "compat": {
+      "supportsStore": false,
+      "supportsDeveloperRole": false,
+      "maxTokensField": "max_tokens",
+      "supportsReasoningEffort": true
+    }
+  },
+  {
     "id": "XiaomiMiMo/MiMo-V2.6-Flash",
     "name": "MiMo-V2.6-Flash",
     "reasoning": true,
@@ -8,9 +30,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.1416,
-      "output": 0.2912,
-      "cacheRead": 0.0708,
+      "input": 0.128,
+      "output": 0.28,
+      "cacheRead": 0.064,
       "cacheWrite": 0
     },
     "contextWindow": 1048320,
@@ -31,9 +53,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.36,
-      "output": 1.44,
-      "cacheRead": 0.18,
+      "input": 0.326,
+      "output": 1.328,
+      "cacheRead": 0.163,
       "cacheWrite": 0
     },
     "contextWindow": 1048320,
@@ -54,9 +76,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.16125,
-      "output": 0.5375,
-      "cacheRead": 0.080625,
+      "input": 0.14625,
+      "output": 0.4875,
+      "cacheRead": 0.073125,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -76,9 +98,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.0238,
-      "output": 4.24,
-      "cacheRead": 0.5119,
+      "input": 1.444,
+      "output": 5.288,
+      "cacheRead": 0.722,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -99,9 +121,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.348,
-      "output": 2.358,
-      "cacheRead": 0.174,
+      "input": 0.421,
+      "output": 2.274,
+      "cacheRead": 0.2105,
       "cacheWrite": 0
     },
     "contextWindow": 65536,
@@ -234,9 +256,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.158,
-      "output": 1.2,
-      "cacheRead": 0.079,
+      "input": 0.13,
+      "output": 1.02,
+      "cacheRead": 0.065,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
@@ -257,9 +279,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.339,
-      "output": 3.11,
-      "cacheRead": 0.1695,
+      "input": 0.319,
+      "output": 2.87,
+      "cacheRead": 0.1595,
       "cacheWrite": 0
     },
     "contextWindow": 32768,
@@ -323,9 +345,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.48,
-      "output": 2.902,
-      "cacheRead": 0.74,
+      "input": 1.224986,
+      "output": 2.391972,
+      "cacheRead": 0.612493,
       "cacheWrite": 0
     },
     "contextWindow": 1048576,
@@ -346,9 +368,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.7625,
-      "output": 3.622,
-      "cacheRead": 0.38125,
+      "input": 0.68039,
+      "output": 3.2004,
+      "cacheRead": 0.340195,
       "cacheWrite": 0
     },
     "contextWindow": 262142,
@@ -368,9 +390,9 @@
       "text"
     ],
     "cost": {
-      "input": 1.37228,
-      "output": 4.31288,
-      "cacheRead": 0.68614,
+      "input": 1.35828,
+      "output": 4.26888,
+      "cacheRead": 0.67914,
       "cacheWrite": 0
     },
     "contextWindow": 202750,
@@ -390,9 +412,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.293,
-      "output": 1.176,
-      "cacheRead": 0.1465,
+      "input": 0.354,
+      "output": 1.416,
+      "cacheRead": 0.177,
       "cacheWrite": 0
     },
     "contextWindow": 196600,
@@ -524,9 +546,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.0804,
-      "output": 0.298,
-      "cacheRead": 0.0402,
+      "input": 0.098,
+      "output": 0.334,
+      "cacheRead": 0.049,
       "cacheWrite": 0
     },
     "contextWindow": 262142,
@@ -568,9 +590,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.48408,
-      "output": 1.95584,
-      "cacheRead": 0.24204,
+      "input": 0.52808,
+      "output": 2.07184,
+      "cacheRead": 0.26404,
       "cacheWrite": 0.6
     },
     "contextWindow": 202752,
@@ -762,9 +784,9 @@
       "text"
     ],
     "cost": {
-      "input": 0.047,
-      "output": 0.174,
-      "cacheRead": 0.0235,
+      "input": 0.045,
+      "output": 0.168,
+      "cacheRead": 0.0225,
       "cacheWrite": 0.03
     },
     "contextWindow": 64000,
@@ -851,9 +873,9 @@
       "image"
     ],
     "cost": {
-      "input": 0.304,
+      "input": 0.302,
       "output": 0.658,
-      "cacheRead": 0.152,
+      "cacheRead": 0.151,
       "cacheWrite": 0
     },
     "contextWindow": 262144,
