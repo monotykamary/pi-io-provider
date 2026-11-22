@@ -28,6 +28,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Qwen3.6 27B | `Qwen/Qwen3.6-27B` | 33K | 33K | ✅ | ✅ | ✅ | $0.40 | $3.67 |
 | Qwen3.6 35B A3B | `Qwen/Qwen3.6-35B-A3B` | 262K | 262K | ✅ | ✅ | ✅ | $0.13 | $0.99 |
 | Qwen3.8 27B | `Qwen/Qwen3.8-27B` | 66K | 66K | ✅ | ✅ | ✅ | $0.39 | $2.40 |
+| Inkling 2 Mini | `thinkingmachines/inkling-2-mini` | 262K | 66K | ✅ | ✅ | ✅ | $0.10 | $0.40 |
 | MiMo-V2.6-Flash | `XiaomiMiMo/MiMo-V2.6-Flash` | 1.0M | 131K | ✅ | ✅ | ✅ | $0.16 | $0.32 |
 | GLM 5.3 Flash | `zai-org/GLM-5.3-Flash` | 262K | 131K | ✅ | ✅ | ✅ | $0.15 | $0.88 |
 | DeepSeek R1 0528 | `deepseek-ai/DeepSeek-R1-0528` | 128K | 128K | ❌ | ✅ | ✅ | $0.52 | $2.21 |
