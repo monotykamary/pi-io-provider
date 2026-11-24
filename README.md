@@ -24,6 +24,7 @@ A [pi](https://github.com/badlogic/pi-mono) extension that adds [IO Intelligence
 | Kimi K2.6 | `moonshotai/Kimi-K2.6` | 262K | 262K | ✅ | ✅ | ✅ | $0.78 | $3.63 |
 | Kimi K2.7 Code | `moonshotai/Kimi-K2.7-Code` | 262K | 262K | ✅ | ✅ | ✅ | $0.95 | $4.30 |
 | Kimi K3 | `moonshotai/Kimi-K3` | 1.0M | 131K | ✅ | ✅ | ✅ | $2.75 | $16.50 |
+| Kimi K3.1 Pro | `moonshotai/Kimi-K3.1-Pro` | 1.0M | 131K | ✅ | ✅ | ✅ | $2.00 | $10.00 |
 | Nemotron 3.5 Super VL | `nvidia/nemotron-3.5-super-vl` | 262K | 131K | ✅ | ✅ | ✅ | $0.17 | $0.49 |
 | Qwen3.6 27B | `Qwen/Qwen3.6-27B` | 33K | 33K | ✅ | ✅ | ✅ | $0.40 | $3.67 |
 | Qwen3.6 35B A3B | `Qwen/Qwen3.6-35B-A3B` | 262K | 262K | ✅ | ✅ | ✅ | $0.13 | $0.99 |
